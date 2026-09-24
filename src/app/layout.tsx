@@ -4,6 +4,7 @@ import { draftMode } from 'next/headers'
 import { AdminBar } from '@/components/AdminBar'
 import { PreviewBanner } from '@/components/PreviewBanner'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
+import { ScrollState } from '@/components/ScrollState'
 import './globals.css'
 
 const figtree = Figtree({
@@ -54,6 +55,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <AdminBar />
         {children}
         <GoogleAnalytics />
+        <ScrollState />
       </body>
     </html>
   )

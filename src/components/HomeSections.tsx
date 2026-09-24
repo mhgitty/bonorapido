@@ -29,7 +29,7 @@ type AnySection = SectionCasinoList | SectionReviewsArchive | SectionGuidesArchi
 // ── Casino list ───────────────────────────────────────────────────────────────
 
 function ScoreBadge({ score }: { score: number }) {
-  const color = score >= 8 ? 'var(--green)' : score >= 6 ? '#ca8a04' : '#dc2626'
+  const color = score >= 8 ? '#2fbf71' : score >= 6 ? '#f5b301' : '#ef4444'
   return (
     <span style={{ display: 'inline-block', background: color, color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 9px', borderRadius: '20px' }}>
       ★ {score.toFixed(1)}
@@ -136,15 +136,15 @@ function CtaBannerSection({ section }: { section: SectionCtaBanner }) {
   const style = section.style || 'green'
 
   const bgMap: Record<string, string> = {
-    green:  'linear-gradient(135deg, var(--green) 0%, #16a34a 100%)',
-    dark:   'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+    green:  'linear-gradient(135deg, #ffa53d 0%, #ff8a00 100%)',
+    dark:   'linear-gradient(135deg, #222d5a 0%, #1e1f36 100%)',
     purple: 'linear-gradient(135deg, #7c3aed 0%, #db2777 100%)',
     light:  'var(--bg-raised)',
   }
   const textColor = style === 'light' ? 'var(--text)' : '#fff'
   const subColor  = style === 'light' ? 'var(--text-muted)' : 'rgba(255,255,255,0.8)'
   const btnBg     = style === 'light' ? 'var(--green)' : '#fff'
-  const btnColor  = style === 'light' ? '#fff' : (style === 'green' ? 'var(--green-dark)' : style === 'purple' ? '#7c3aed' : '#1e293b')
+  const btnColor  = style === 'light' ? '#fff' : (style === 'green' ? 'var(--green-dark)' : style === 'purple' ? '#7c3aed' : '#1e1f36')
 
   return (
     <div style={{
@@ -352,7 +352,7 @@ function ProviderCardsSection({
                   <div style={{
                     width: '64px', height: '64px',
                     borderRadius: '50%',
-                    background: 'rgba(34,197,94,0.1)',
+                    background: 'rgba(255,144,25,0.1)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: '22px', fontWeight: 800, color: 'var(--green)',
                     fontFamily: 'var(--font-display)',

@@ -29,7 +29,7 @@ interface Props {
 }
 
 function ScoreBadge({ score }: { score: number }) {
-  const color = score >= 8 ? 'var(--green)' : score >= 6 ? '#ca8a04' : '#dc2626'
+  const color = score >= 8 ? '#2fbf71' : score >= 6 ? '#f5b301' : '#ef4444'
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', gap: '3px',

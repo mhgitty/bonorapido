@@ -75,7 +75,7 @@ export function SlotBonusPopup({ casino }: { casino?: Casino | null }) {
 
             {casino.bonus && (
               <div style={{ fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 800, color: '#fff', marginBottom: '20px', lineHeight: 1.25 }}>
-                <span style={{ color: '#4ade80' }}>{casino.bonus}</span>
+                <span style={{ color: 'var(--green)' }}>{casino.bonus}</span>
               </div>
             )}
 
@@ -87,7 +87,7 @@ export function SlotBonusPopup({ casino }: { casino?: Casino | null }) {
                 href={cta}
                 {...(external ? { target: '_blank', rel: 'nofollow noopener noreferrer sponsored' } : {})}
                 style={{
-                  background: '#4ade80', color: '#0b1220', fontWeight: 800, fontSize: '15px',
+                  background: 'var(--green)', color: '#fff', fontWeight: 800, fontSize: '15px',
                   padding: '14px 26px', borderRadius: '10px', textDecoration: 'none', whiteSpace: 'nowrap',
                 }}
               >

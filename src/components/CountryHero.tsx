@@ -84,7 +84,7 @@ export function CountryHero({ title, intro, heroCards, breadcrumbs }: CountryHer
                         <div style={{
                           width: '40px', height: '40px',
                           borderRadius: '10px',
-                          background: 'rgba(34,197,94,0.12)',
+                          background: 'rgba(255,144,25,0.12)',
                         }} />
                       )}
                     </div>

@@ -17,7 +17,7 @@ interface BookmakerCardProps {
 }
 
 function ScoreBadge({ score }: { score: number }) {
-  const color = score >= 8 ? '#16a34a' : score >= 6 ? '#ca8a04' : '#dc2626'
+  const color = score >= 8 ? '#2fbf71' : score >= 6 ? '#f5b301' : '#ef4444'
   return (
     <div style={{
       display: 'inline-flex', alignItems: 'center', gap: '4px',
@@ -134,7 +134,7 @@ export function BookmakerCard({
               rel="nofollow noopener noreferrer sponsored"
               style={{
                 display: 'inline-block',
-                background: '#16a34a', color: '#fff',
+                background: 'var(--green)', color: '#fff',
                 padding: '12px 20px', borderRadius: '8px',
                 fontSize: '14px', fontWeight: 600,
                 textDecoration: 'none', whiteSpace: 'nowrap',

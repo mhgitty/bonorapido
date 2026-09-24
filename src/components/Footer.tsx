@@ -115,9 +115,9 @@ export async function Footer({
               <Image
                 src={logoWhiteUrl}
                 alt="Bonorapido"
-                height={32}
-                width={180}
-                style={{ height: '32px', width: 'auto', display: 'block' }}
+                height={64}
+                width={240}
+                style={{ height: '64px', width: 'auto', display: 'block' }}
                 unoptimized={logoWhiteUrl.startsWith('http')}
               />
             </div>
@@ -194,6 +194,7 @@ export async function Footer({
         )}
       </div>
 
+      {(longDisclaimer || (trustIcons && trustIcons.length > 0)) && (<>
       {/* ── Divider ── */}
       <div style={{ borderTop: '1px solid var(--border)' }} />
 
@@ -245,6 +246,7 @@ export async function Footer({
           </div>
         )}
       </div>
+      </>)}
 
       {/* ── Bottom bar ── */}
       <div style={{ borderTop: '1px solid var(--border)' }}>

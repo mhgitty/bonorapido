@@ -76,14 +76,14 @@ export function CasinoKort({ value }: { value: CasinoKortData }) {
         {(hasPros || hasCons) && (
           <div className="pros-cons-grid">
             {hasPros && (
-              <div style={{ flex: 1, minWidth: '140px', border: '1px solid rgba(34,197,94,0.35)', borderRadius: '8px', padding: '12px 14px' }}>
+              <div style={{ flex: 1, minWidth: '140px', border: '1px solid rgba(47,191,113,0.35)', borderRadius: '8px', padding: '12px 14px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
-                  <Icon name="check-circle" size={14} color="var(--green)" />
-                  <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--green)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Ventajas</span>
+                  <Icon name="check-circle" size={14} color="#2fbf71" />
+                  <span style={{ fontSize: '12px', fontWeight: 700, color: '#2fbf71', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Ventajas</span>
                 </div>
                 {value.pros!.map((pro, i) => (
                   <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', fontSize: '13px', color: 'var(--text-muted)', marginBottom: '6px', lineHeight: 1.5 }}>
-                    <Icon name="check-circle" size={14} color="var(--green)" style={{ flexShrink: 0, marginTop: '1px' }} /><span>{pro}</span>
+                    <Icon name="check-circle" size={14} color="#2fbf71" style={{ flexShrink: 0, marginTop: '1px' }} /><span>{pro}</span>
                   </div>
                 ))}
               </div>

@@ -33,5 +33,5 @@ export function ComparisonTable({ data }: ComparisonTableProps) {
   }
 
   // Scroll target for the hero "jump to comparison list" button, on every page.
-  return <div id="comparison-list" style={{ scrollMarginTop: '80px' }}>{inner}</div>
+  return <div id="comparison-list" style={{ scrollMarginTop: '100px' }}>{inner}</div>
 }

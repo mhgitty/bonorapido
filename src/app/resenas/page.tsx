@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 function ScoreBadge({ score }: { score: number }) {
-  const color = score >= 8 ? 'var(--green)' : score >= 6 ? '#ca8a04' : '#dc2626'
+  const color = score >= 8 ? '#2fbf71' : score >= 6 ? '#f5b301' : '#ef4444'
   return (
     <span style={{ display: 'inline-block', background: color, color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 9px', borderRadius: '20px' }}>
       ★ {score.toFixed(1)}

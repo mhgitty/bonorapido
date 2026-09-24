@@ -39,7 +39,7 @@ function formatDate(dateStr: string) {
 }
 
 function ScoreBadge({ score }: { score: number }) {
-  const color = score >= 8 ? 'var(--green)' : score >= 6 ? '#ca8a04' : '#dc2626'
+  const color = score >= 8 ? '#2fbf71' : score >= 6 ? '#f5b301' : '#ef4444'
   return (
     <span style={{ display: 'inline-block', background: color, color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 9px', borderRadius: '20px' }}>
       ★ {score.toFixed(1)}
@@ -107,7 +107,7 @@ export default async function AuthorPage({ params }: Props) {
               ) : (
                 <div style={{
                   width: '160px', height: '160px', borderRadius: '50%',
-                  background: 'rgba(34,197,94,0.12)', border: '3px solid var(--green)',
+                  background: 'rgba(255,144,25,0.12)', border: '3px solid var(--green)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: '60px', fontWeight: 800, color: 'var(--green)',
                   fontFamily: 'var(--font-display)', flexShrink: 0,

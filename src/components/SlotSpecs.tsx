@@ -82,7 +82,7 @@ export function SlotSpecs({ slot, title = 'Características y estadísticas clav
   if (stats.length === 0 && !hasFeatures) return null
 
   return (
-    <div id="slot-details" style={{ margin: '28px 0', scrollMarginTop: '80px' }}>
+    <div id="slot-details" style={{ margin: '28px 0', scrollMarginTop: '100px' }}>
       <div style={{ border: '1px solid var(--border)', borderRadius: '16px', background: 'var(--bg-card)', padding: '20px' }}>
         <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: 'var(--text)', margin: '0 0 18px' }}>
           {title}

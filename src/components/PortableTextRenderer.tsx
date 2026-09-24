@@ -42,7 +42,7 @@ export function PortableTextRenderer({ value, posts }: { value: any[]; posts?: P
   }
   const withAnchor = (type: string, key: string, node: any) =>
     key && firstKeyByType[type] === key && anchorFor[type]
-      ? <div id={anchorFor[type]} style={{ scrollMarginTop: '80px' }}>{node}</div>
+      ? <div id={anchorFor[type]} style={{ scrollMarginTop: '100px' }}>{node}</div>
       : node
 
   const components = {
@@ -50,7 +50,7 @@ export function PortableTextRenderer({ value, posts }: { value: any[]; posts?: P
       h2: ({ children, value: v }: any) => {
         const text = v?.children?.map((c: any) => c.text).join('') || ''
         return (
-          <h2 id={headingId(text)} style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', margin: '36px 0 14px', scrollMarginTop: '72px' }}>
+          <h2 id={headingId(text)} style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', margin: '36px 0 14px', scrollMarginTop: '100px' }}>
             {children}
           </h2>
         )
@@ -58,7 +58,7 @@ export function PortableTextRenderer({ value, posts }: { value: any[]; posts?: P
       h3: ({ children, value: v }: any) => {
         const text = v?.children?.map((c: any) => c.text).join('') || ''
         return (
-          <h3 id={headingId(text)} style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.02em', margin: '28px 0 10px', scrollMarginTop: '72px' }}>
+          <h3 id={headingId(text)} style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.02em', margin: '28px 0 10px', scrollMarginTop: '100px' }}>
             {children}
           </h3>
         )
@@ -66,7 +66,7 @@ export function PortableTextRenderer({ value, posts }: { value: any[]; posts?: P
       h4: ({ children, value: v }: any) => {
         const text = v?.children?.map((c: any) => c.text).join('') || ''
         return (
-          <h4 id={headingId(text)} style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--text)', margin: '20px 0 8px', scrollMarginTop: '72px' }}>
+          <h4 id={headingId(text)} style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--text)', margin: '20px 0 8px', scrollMarginTop: '100px' }}>
             {children}
           </h4>
         )
@@ -149,7 +149,7 @@ export function PortableTextRenderer({ value, posts }: { value: any[]; posts?: P
                 display: 'block',
                 width: '100%',
                 padding: '15px 24px',
-                background: 'linear-gradient(135deg, var(--green) 0%, #16a34a 100%)',
+                background: 'linear-gradient(135deg, #ffa53d 0%, #ff8a00 100%)',
                 color: '#fff',
                 fontWeight: 700,
                 fontSize: '16px',
@@ -157,7 +157,7 @@ export function PortableTextRenderer({ value, posts }: { value: any[]; posts?: P
                 borderRadius: '12px',
                 textDecoration: 'none',
                 letterSpacing: '-0.01em',
-                boxShadow: '0 4px 14px rgba(34,197,94,0.25)',
+                boxShadow: '0 4px 14px rgba(255,144,25,0.25)',
                 transition: 'opacity .15s',
               }}
             >

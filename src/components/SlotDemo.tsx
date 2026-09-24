@@ -27,7 +27,7 @@ export function SlotDemo({ embed, title, slotName, provider, rtp, promoCasino }:
     : slotName ? `Juega gratis a la demo de ${titleCase(slotName)}` : 'Juega a la demo'
 
   return (
-    <div id="free-demo" className="section" style={{ paddingBottom: 0, scrollMarginTop: '80px' }}>
+    <div id="free-demo" className="section" style={{ paddingBottom: 0, scrollMarginTop: '100px' }}>
       <div style={{ border: '1px solid var(--border)', borderRadius: '16px', overflow: 'hidden', background: 'var(--bg-card)' }}>
         {/* Header bar */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '14px 18px', borderBottom: '1px solid var(--border)', background: 'var(--bg-raised)' }}>

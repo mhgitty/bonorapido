@@ -22,7 +22,7 @@ const rtpNum = (s?: string) => {
 function RtpBadge({ rtp }: { rtp?: string }) {
   const n = rtpNum(rtp)
   if (n == null) return null
-  const color = n >= 96 ? 'var(--green)' : n >= 94 ? 'var(--gold)' : '#dc2626'
+  const color = n >= 96 ? '#2fbf71' : n >= 94 ? '#f5b301' : '#ef4444'
   return <span className="slot-card-rtp" style={{ color, borderColor: color }}>RTP: {rtp}</span>
 }
 

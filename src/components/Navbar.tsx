@@ -82,9 +82,10 @@ export async function Navbar({ navItems, logoHref = '/' }: { navItems?: Resolved
           <Image
             src="/logo.webp"
             alt="Bonorapido"
-            height={36}
-            width={200}
-            style={{ height: '36px', width: 'auto', display: 'block' }}
+            height={64}
+            width={240}
+            className="navbar-logo-img"
+            style={{ width: 'auto', display: 'block' }}
             priority
           />
         </Link>
