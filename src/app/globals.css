@@ -1306,7 +1306,7 @@ a.author-bar-name:hover { color: var(--green); }
 .share-btns button:hover { background: var(--green); border-color: var(--green); }
 @media (max-width: 760px) {
   .author-bar { gap: 14px 22px; }
-  .share-btns { margin-left: 0; width: 100%; }
+  .share-btns { display: none; }
 }
 
 /* ─── Sticky navbar: solid dark once the page is scrolled ────────────────── */
