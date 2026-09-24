@@ -347,7 +347,7 @@ async function main() {
             title: h1 || title,
             slug: { _type: 'slug', current: segs.at(-1) },
             market: site.market,
-            ...(parentId ? { parent: { _type: 'reference', _ref: parentId } } : {}),
+            ...(parentId ? { parent: { _type: 'reference', _ref: parentId, _weak: true } } : {}),
             body: blocks,
             ...seo,
           }
