@@ -80,8 +80,8 @@ export function PortableTextRenderer({ value, posts }: { value: any[]; posts?: P
         <blockquote style={{ margin: '28px 0', padding: 0, border: 'none' }}>
           <div style={{
             position: 'relative',
-            background: 'rgba(26,122,60,0.06)',
-            border: '1px solid rgba(26,122,60,0.18)',
+            background: 'rgba(255,144,25,0.06)',
+            border: '1px solid rgba(255,144,25,0.18)',
             borderRadius: '10px',
             padding: '20px 22px 18px 52px',
           }}>

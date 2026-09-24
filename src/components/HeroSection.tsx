@@ -89,7 +89,7 @@ export function HeroSection({ title, intro, eyebrow, updatedAt, narrow = false, 
                       padding: outline ? '10.5px 18px' : '10.5px 18px',
                       borderRadius: '10px',
                       textDecoration: 'none',
-                      boxShadow: outline ? 'none' : '0 4px 14px rgba(26,122,60,0.28)',
+                      boxShadow: outline ? 'none' : '0 4px 14px rgba(255,144,25,0.28)',
                     }}
                   >
                     {replaceDateVars(b.text)}

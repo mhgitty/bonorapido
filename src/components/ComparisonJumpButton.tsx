@@ -26,7 +26,7 @@ export function ComparisonJumpButton({ data }: { data: any }) {
           fontSize: '14.5px', fontWeight: 700,
           padding: '10.5px 18px', borderRadius: '10px',
           textDecoration: 'none',
-          boxShadow: '0 4px 14px rgba(26,122,60,0.28)',
+          boxShadow: '0 4px 14px rgba(255,144,25,0.28)',
         }}
       >
         {replaceDateVars(text)}

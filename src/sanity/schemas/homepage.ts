@@ -1,6 +1,7 @@
 import { defineField, defineType } from 'sanity'
 import { bodyField, introField } from './page'
 import { comparisonTableFields } from './comparisonTable'
+import { heroCasinosField, heroCardsField } from './heroTopFields'
 
 export const homepageType = defineType({
   name: 'homepage',
@@ -21,6 +22,8 @@ export const homepageType = defineType({
       initialValue: 'Find the best online casino bonus',
     }),
     { ...introField, title: 'Intro', group: 'hero', description: 'Short text below the heading in the hero section' } as any,
+    heroCasinosField('hero') as any,
+    heroCardsField('hero') as any,
 
     // Comparison table (renders above body text)
     ...comparisonTableFields.map(f => ({ ...f, group: 'content' })) as any,

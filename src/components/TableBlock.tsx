@@ -22,7 +22,7 @@ export function TableBlock({ value }: { value: TableBlockValue }) {
               <tr>
                 {(headers ?? []).map((h, i) => (
                   <th key={i} style={{
-                    background: 'var(--bg-navbar)', borderBottom: '2px solid var(--border)',
+                    background: '#3b4380', borderBottom: '2px solid var(--border)',
                     padding: '10px 16px', textAlign: 'left',
                     fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text)',
                     whiteSpace: 'nowrap', fontSize: '13.5px',

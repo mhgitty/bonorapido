@@ -415,6 +415,8 @@ export async function getHomepage() {
   return client.fetch(
     `*[_type == "homepage" && _id == "homepage"][0] {
       heroHeading, heroGreenText, intro,
+      "heroCards": heroCards[] { _key, title, icon, href },
+      "heroCasinos": heroCasinos[] { _key, bonusText, url, "bookmaker": bookmaker-> { name, url, indbetalingsbonus, "logoUrl": logo.asset->url, "logoAlt": logo.alt } },
       "body": body[] {
         ...,
         _type == "casinoKortBlock" => {
@@ -827,6 +829,7 @@ export async function getCountryHomepage(market: 'ar' | 'mx') {
     `*[_type == "countryHomepage" && _id == $id][0] {
       market, heroHeading, intro,
       "heroCards": heroCards[] { _key, title, icon, href },
+      "heroCasinos": heroCasinos[] { _key, bonusText, url, "bookmaker": bookmaker-> { name, url, indbetalingsbonus, "logoUrl": logo.asset->url, "logoAlt": logo.alt } },
       "body": body[] {
         ...,
         _type == "casinoKortBlock" => {

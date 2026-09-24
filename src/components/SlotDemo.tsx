@@ -43,7 +43,7 @@ export function SlotDemo({ embed, title, slotName, provider, rtp, promoCasino }:
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
             {rtp && (
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(26,122,60,0.12)', color: 'var(--green)', fontWeight: 700, fontSize: '13px', padding: '6px 12px', borderRadius: '8px', border: '1px solid rgba(26,122,60,0.25)' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,144,25,0.12)', color: 'var(--green)', fontWeight: 700, fontSize: '13px', padding: '6px 12px', borderRadius: '8px', border: '1px solid rgba(255,144,25,0.25)' }}>
                 RTP: {rtp}
               </span>
             )}

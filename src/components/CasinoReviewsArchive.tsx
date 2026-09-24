@@ -130,7 +130,7 @@ export function CasinoReviewsArchive({ casinos, hrefPrefix = '/resenas', title =
                     <img src={c.logo.url} alt={c.logo.alt || c.name}
                       style={{ maxWidth: '150px', maxHeight: '60px', objectFit: 'contain', borderRadius: '8px', display: 'block' }} />
                   ) : (
-                    <span style={{ fontSize: '15px', fontWeight: 700, color: '#1f2937' }}>{c.name}</span>
+                    <span style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)' }}>{c.name}</span>
                   )}
                 </Link>
 

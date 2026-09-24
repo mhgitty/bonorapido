@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { bodyField, introField } from './page'
+import { heroCasinosField, heroCardsField } from './heroTopFields'
 
 const sectionIntroField = { ...introField, name: 'intro', title: 'Intro text (optional)', description: 'Rich text shown between the section title and the cards.' } as any
 
@@ -194,28 +195,8 @@ export const countryHomepageType = defineType({
       description: 'Main H1 on the country homepage.',
     }),
     { ...introField, title: 'Intro text', group: 'content' } as any,
-    // ── Hero navigation cards ──────────────────────────────────────────────
-    defineField({
-      name: 'heroCards',
-      title: 'Hero cards (right side)',
-      type: 'array',
-      group: 'content',
-      description: 'Up to 4 quick-link cards shown on the right half of the hero. Each card has a title, Solar icon, and link.',
-      of: [{
-        type: 'object',
-        name: 'heroCard',
-        fields: [
-          defineField({ name: 'title', title: 'Card title', type: 'string', validation: (r: any) => r.required() }),
-          defineField({ name: 'icon', title: 'Solar icon name (e.g. card-bold-duotone → use "card")', type: 'string' }),
-          defineField({ name: 'href', title: 'Link URL', type: 'string', validation: (r: any) => r.required() }),
-        ],
-        preview: {
-          select: { title: 'title', href: 'href' },
-          prepare: ({ title, href }: any) => ({ title: title || 'Card', subtitle: href }),
-        },
-      }],
-      validation: (r: any) => r.max(4),
-    }),
+    heroCasinosField('content') as any,
+    heroCardsField('content') as any,
     { ...bodyField, group: 'content' } as any,
     // ── Page sections builder ──────────────────────────────────────────────
     defineField({

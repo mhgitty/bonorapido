@@ -25,7 +25,7 @@ export default async function NotFound() {
           <>
             <div style={{
               display: 'inline-block',
-              background: 'rgba(26,122,60,0.1)', color: 'var(--green)',
+              background: 'rgba(255,144,25,0.1)', color: 'var(--green)',
               fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px',
               padding: '4px 12px', borderRadius: '20px', marginBottom: '18px',
             }}>

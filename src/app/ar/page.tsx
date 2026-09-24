@@ -1,4 +1,4 @@
-import { CountryHero } from '@/components/CountryHero'
+import { HomeTopHero } from '@/components/HomeTopHero'
 import { PortableTextRenderer } from '@/components/PortableTextRenderer'
 import { MobileToc } from '@/components/MobileToc'
 import { JsonLd } from '@/components/JsonLd'
@@ -64,12 +64,7 @@ export default async function CaHomePage() {
     <>
       <HreflangHead script={hreflangScript} />
       <JsonLd data={jsonLd} />
-      <CountryHero
-        title={title}
-        intro={intro}
-        heroCards={heroCards}
-        breadcrumbs={[{ label: 'Inicio', href: '/ar/' }]}
-      />
+      <HomeTopHero title={title} intro={intro} casinos={hp?.heroCasinos ?? []} buttons={heroCards} />
 
       {hp?.sections?.length > 0 && (
         <HomeSections sections={hp.sections} market="ar" />

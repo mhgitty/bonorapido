@@ -38,7 +38,7 @@ const inputStyle: React.CSSProperties = {
   fontSize: '15px',
   fontWeight: 600,
   color: 'var(--text)',
-  background: '#fff',
+  background: 'var(--bg-card)',
   border: '1px solid var(--border-faint)',
   borderRadius: '8px',
   outline: 'none',
@@ -93,7 +93,7 @@ export function WageringCalculator({ value }: WageringCalculatorProps) {
           border: '1px solid var(--border)',
           borderRadius: '12px',
           overflow: 'hidden',
-          background: '#fff',
+          background: 'var(--bg-card)',
         }}
       >
         {/* Inputs */}
@@ -180,7 +180,7 @@ export function WageringCalculator({ value }: WageringCalculatorProps) {
                 position: 'absolute', top: '3px',
                 left: includeDeposit ? '23px' : '3px',
                 width: '18px', height: '18px', borderRadius: '50%',
-                background: '#fff',
+                background: 'var(--bg-card)',
                 transition: 'left 0.18s ease',
                 boxShadow: '0 1px 3px rgba(0,0,0,0.25)',
               }} />

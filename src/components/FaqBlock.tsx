@@ -39,7 +39,7 @@ export function FaqBlock({ value }: FaqBlockProps) {
                   width: '100%',
                   textAlign: 'left',
                   padding: '20px 24px',
-                  background: isOpen ? '#fff' : '#fff',
+                  background: 'var(--bg-card)',
                   border: 'none',
                   cursor: 'pointer',
                   display: 'flex',
@@ -69,7 +69,7 @@ export function FaqBlock({ value }: FaqBlockProps) {
                   fontSize: '14.5px',
                   color: 'var(--text-muted)',
                   lineHeight: 1.7,
-                  background: '#fff',
+                  background: 'var(--bg-card)',
                 }}>
                   {item.answer}
                 </div>

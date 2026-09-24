@@ -36,7 +36,7 @@ const inputStyle: React.CSSProperties = {
   fontSize: '15px',
   fontWeight: 600,
   color: 'var(--text)',
-  background: '#fff',
+  background: 'var(--bg-card)',
   border: '1px solid var(--border-faint)',
   borderRadius: '8px',
   outline: 'none',
@@ -78,7 +78,7 @@ export function CashbackCalculator({ value }: CashbackCalculatorProps) {
           border: '1px solid var(--border)',
           borderRadius: '12px',
           overflow: 'hidden',
-          background: '#fff',
+          background: 'var(--bg-card)',
         }}
       >
         <div className="wcalc-inputs" style={{ padding: '22px 24px' }}>
