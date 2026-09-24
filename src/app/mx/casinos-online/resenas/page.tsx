@@ -66,7 +66,6 @@ export default async function AuReviewsPage() {
       <JsonLd data={jsonLd} />
       <HreflangLinks docId={(page as any)?._id} />
       <HeroSection
-        buttons={heroButtonsFor(page)}
         title={title}
         intro={intro}
         author={author}
@@ -92,7 +91,7 @@ export default async function AuReviewsPage() {
       {page?.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} />
+            <MobileToc body={page.body} buttons={heroButtonsFor(page)} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

@@ -121,7 +121,6 @@ export default async function CaSlugPage({ params }: Props) {
         author={author}
         factChecker={factChecker}
         updatedAt={(page as any).lastUpdated ?? null}
-        buttons={heroButtons}
         breadcrumbs={breadcrumbs}
       />
 
@@ -140,7 +139,7 @@ export default async function CaSlugPage({ params }: Props) {
       {page.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} />
+            <MobileToc body={page.body} buttons={heroButtons} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

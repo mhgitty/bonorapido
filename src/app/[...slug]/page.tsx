@@ -103,7 +103,6 @@ export default async function DynamicPage({ params }: Props) {
         author={author}
         factChecker={page.factChecker}
         updatedAt={page.lastUpdated}
-        buttons={heroButtons}
         breadcrumbs={[
           { label: 'Inicio', href: '/' },
           ...slug.slice(0, -1).map((seg, idx) => ({
@@ -129,7 +128,7 @@ export default async function DynamicPage({ params }: Props) {
       {page.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} />
+            <MobileToc body={page.body} buttons={heroButtons} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { Icon } from './Icon'
+import { ShareButtons } from './ShareButtons'
 
 interface Author {
   name: string
@@ -11,73 +13,51 @@ interface AuthorBarProps {
   author?: Author | null
   factChecker?: Author | null
   updatedAt?: string | null
+  /** Show LinkedIn / X / Facebook share buttons on the right. */
+  share?: boolean
 }
 
-function AuthorLink({ person, label }: { person: Author; label: string }) {
+function Person({ person, label }: { person: Author; label: string }) {
   const href = person.slug?.current ? `/autor/${person.slug.current}/` : null
+  const name = href
+    ? <Link href={href} className="author-bar-name">{person.name}</Link>
+    : <span className="author-bar-name">{person.name}</span>
   return (
-    <div style={{ fontSize: '12px', color: 'var(--text-faint)', lineHeight: 1.3 }}>
-      {label}{' '}
-      {href
-        ? <Link href={href} style={{ color: 'var(--green)', fontWeight: 600, textDecoration: 'none' }}>{person.name}</Link>
-        : <span style={{ color: 'var(--text)', fontWeight: 600 }}>{person.name}</span>
-      }
+    <div className="author-bar-item">
+      {person.imageUrl
+        ? <img src={person.imageUrl} alt={person.name} className="author-bar-avatar" />
+        : <span className="author-bar-avatar author-bar-avatar--initial">{person.name.charAt(0)}</span>}
+      <div>
+        <div className="author-bar-label">{label}</div>
+        {name}
+      </div>
     </div>
   )
 }
 
-export function AuthorBar({ author, factChecker, updatedAt }: AuthorBarProps) {
-  if (!author && !factChecker && !updatedAt) return null
-
-  const dateStr = updatedAt
-    ? new Date(updatedAt).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+/** Byline under the H1: author, fact checker, last updated date and share buttons. */
+export function AuthorBar({ author, factChecker, updatedAt, share = true }: AuthorBarProps) {
+  const date = updatedAt ? new Date(updatedAt) : null
+  const dateStr = date && !isNaN(date.getTime())
+    ? date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/Madrid' }).replace('.', '')
     : null
 
   if (!author && !factChecker && !dateStr) return null
 
   return (
-    <div style={{
-      display: 'flex', alignItems: 'center', gap: '16px',
-      marginBottom: '20px', flexWrap: 'wrap',
-    }}>
-      {author && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          {author.imageUrl && (
-            <div style={{ width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0, border: '2px solid var(--border)' }}>
-              <img src={author.imageUrl} alt={author.name} style={{ width: '40px', height: '40px', objectFit: 'cover', display: 'block' }} />
-            </div>
-          )}
+    <div className="author-bar">
+      {author && <Person person={author} label="Escrito por" />}
+      {factChecker && <Person person={factChecker} label="Verificado por" />}
+      {dateStr && (
+        <div className="author-bar-item">
+          <span className="author-bar-icon"><Icon name="calendar-mark" size={20} color="var(--green)" /></span>
           <div>
-            <AuthorLink person={author} label="Autor:" />
-            {dateStr && (
-              <div style={{ fontSize: '12px', color: 'var(--text-faint)', lineHeight: 1.3 }}>
-                Última actualización: <span style={{ color: 'var(--text-muted)' }}>{dateStr}</span>
-              </div>
-            )}
+            <div className="author-bar-label">Última actualización</div>
+            <time className="author-bar-name" dateTime={date!.toISOString()}>{dateStr}</time>
           </div>
         </div>
       )}
-
-      {author && factChecker && (
-        <div style={{ width: '1px', height: '36px', background: 'var(--border)', flexShrink: 0 }} />
-      )}
-
-      {factChecker && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          {factChecker.imageUrl && (
-            <div style={{ width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0, border: '2px solid var(--border)' }}>
-              <img src={factChecker.imageUrl} alt={factChecker.name} style={{ width: '40px', height: '40px', objectFit: 'cover', display: 'block' }} />
-            </div>
-          )}
-          <AuthorLink person={factChecker} label="Verificado por:" />
-        </div>
-      )}
-
-      {!author && dateStr && (
-        <div style={{ fontSize: '12px', color: 'var(--text-faint)' }}>
-          Última actualización: <span style={{ color: 'var(--text-muted)' }}>{dateStr}</span>
-        </div>
-      )}
+      {share && <ShareButtons />}
     </div>
   )
 }

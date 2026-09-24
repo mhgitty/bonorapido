@@ -73,7 +73,6 @@ export default async function CaPaymentMethodsIndexPage() {
       <HreflangLinks docId={(page as any)?._id} />
 
       <HeroSection
-        buttons={heroButtonsFor(page)}
         title={page.title}
         intro={page.intro ?? undefined}
         author={author}
@@ -108,7 +107,7 @@ export default async function CaPaymentMethodsIndexPage() {
       {page.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} />
+            <MobileToc body={page.body} buttons={heroButtonsFor(page)} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

@@ -79,7 +79,6 @@ export default async function AuBonusPage() {
       <HreflangHead script={hreflangScript} />
       <JsonLd data={jsonLd} />
       <HeroSection
-        buttons={heroButtonsFor(page)}
         title={page.title}
         intro={(page as any).intro ?? undefined}
         author={author}
@@ -100,7 +99,7 @@ export default async function AuBonusPage() {
       {page.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} />
+            <MobileToc body={page.body} buttons={heroButtonsFor(page)} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

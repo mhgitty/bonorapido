@@ -94,7 +94,6 @@ export function CmsPageView({ page, settings, hreflangScript, slug, homeHref, la
         author={author}
         factChecker={factChecker}
         updatedAt={page.lastUpdated ?? null}
-        buttons={heroButtons}
         breadcrumbs={breadcrumbs}
       />
 
@@ -114,7 +113,7 @@ export function CmsPageView({ page, settings, hreflangScript, slug, homeHref, la
       {page.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} />
+            <MobileToc body={page.body} buttons={heroButtons} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

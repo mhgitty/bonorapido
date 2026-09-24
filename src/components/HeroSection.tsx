@@ -24,10 +24,7 @@ export function HeroSection({ title, intro, eyebrow, updatedAt, narrow = false, 
   const hasIntro = Array.isArray(intro) ? intro.length > 0 : !!intro
 
   return (
-    <section className="hero-section" style={{
-      background: 'var(--bg-hero)',
-      borderBottom: '1px solid var(--border)',
-    }}>
+    <section className="hero-section hero-section--article" style={{ background: 'var(--bg-hero)' }}>
       <div style={{ maxWidth, margin: '0 auto' }}>
 
         {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumbs crumbs={breadcrumbs} />}
@@ -49,7 +46,7 @@ export function HeroSection({ title, intro, eyebrow, updatedAt, narrow = false, 
           fontSize: 'clamp(24px, 3.5vw, 40px)',
           fontWeight: 800, color: 'var(--text)',
           lineHeight: 1.15, letterSpacing: '-0.03em',
-          marginBottom: hasAuthorBar ? '20px' : hasIntro ? '16px' : '0',
+          marginBottom: hasAuthorBar ? '22px' : hasIntro ? '16px' : '0',
           width: '100%',
         }}>
           {replaceDateVars(title)}

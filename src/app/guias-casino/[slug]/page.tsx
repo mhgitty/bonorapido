@@ -82,7 +82,6 @@ export default async function CasinoGuidePage({ params }: Props) {
       <HreflangLinks docId={(guide as any)._id} />
       <Navbar />
       <HeroSection
-        buttons={heroButtonsFor(guide)}
         title={guide.title}
         intro={(guide as any).intro ?? undefined}
         author={author}
@@ -105,7 +104,7 @@ export default async function CasinoGuidePage({ params }: Props) {
       {guide.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={guide.body} />
+            <MobileToc body={guide.body} buttons={heroButtonsFor(guide)} />
             <PortableTextRenderer value={guide.body} />
           </article>
           <aside className="toc-sidebar">

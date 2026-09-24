@@ -2,13 +2,16 @@
 
 import { Icon } from '@/components/Icon'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { headingId } from '@/lib/headingId'
+import { replaceDateVars } from '@/lib/dateVars'
 
 interface Heading {
   id: string
   text: string
 }
+
+type QuickButton = { text: string; targetId: string; variant?: 'solid' | 'outline' }
 
 function extractHeadings(body: any[]): Heading[] {
   if (!body?.length) return []
@@ -21,86 +24,76 @@ function extractHeadings(body: any[]): Heading[] {
     .filter((h) => h.text.length > 0)
 }
 
-export function MobileToc({ body }: { body: any[] }) {
-  const [open, setOpen] = useState(false)
-  const headings = extractHeadings(body)
+function scrollToId(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 
-  if (!headings.length) return null
+/**
+ * Article toolbar at the top of the body: a compact "Índice" dropdown (table of
+ * contents) with the page's quick-link buttons inline next to it.
+ */
+export function MobileToc({ body, buttons }: { body: any[]; buttons?: QuickButton[] | null }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  const headings = extractHeadings(body)
+  const btns = (buttons ?? []).filter((b) => b?.text && b?.targetId)
+
+  // Close the dropdown on outside click / Escape
+  useEffect(() => {
+    if (!open) return
+    const onDown = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false) }
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('mousedown', onDown)
+    document.addEventListener('keydown', onKey)
+    return () => { document.removeEventListener('mousedown', onDown); document.removeEventListener('keydown', onKey) }
+  }, [open])
+
+  if (!headings.length && !btns.length) return null
 
   return (
-    <div className="mobile-toc" style={{
-      background: 'var(--bg-card)',
-      border: '1px solid var(--border)',
-      borderRadius: '12px',
-      marginBottom: '28px',
-      overflow: 'hidden',
-    }}>
-      {/* Toggle button */}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        style={{
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '14px 18px',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          gap: '8px',
-        }}
-      >
-        <span style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: '13px',
-          fontWeight: 700,
-          color: 'var(--text)',
-          letterSpacing: '-0.01em',
-        }}>
-          Índice
-        </span>
-        <Icon name="alt-arrow-down" size={16} style={{ flexShrink: 0, color: 'var(--text-muted)', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease' }} />
-      </button>
+    <div className="mobile-toc article-toolbar">
+      {headings.length > 0 && (
+        <div className="toc-dd" ref={ref}>
+          <button
+            type="button"
+            className={`toc-dd-btn${open ? ' is-open' : ''}`}
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+          >
+            <Icon name="list" size={18} color="var(--green)" />
+            <span className="toc-dd-label">Índice</span>
+            <span className="toc-dd-count">{headings.length}</span>
+            <Icon name="alt-arrow-down" size={16} style={{ marginLeft: 'auto', flexShrink: 0, color: 'var(--text-muted)', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }} />
+          </button>
 
-      {/* Collapsible list */}
-      {open && (
-        <ul style={{
-          listStyle: 'none',
-          padding: '0 18px 14px',
-          margin: 0,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2px',
-          borderTop: '1px solid var(--border-faint)',
-          paddingTop: '10px',
-        }}>
-          {headings.map(({ id, text }) => (
-            <li key={id}>
-              <a
-                href={`#${id}`}
-                style={{
-                  display: 'block',
-                  fontSize: '14px',
-                  lineHeight: 1.5,
-                  color: 'var(--text-muted)',
-                  textDecoration: 'none',
-                  padding: '5px 0 5px 10px',
-                  borderLeft: '2px solid var(--border)',
-                }}
-                onClick={(e) => {
-                  e.preventDefault()
-                  setOpen(false)
-                  setTimeout(() => {
-                    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }, 50)
-                }}
-              >
-                {text}
-              </a>
-            </li>
-          ))}
-        </ul>
+          {open && (
+            <ol className="toc-dd-panel">
+              {headings.map(({ id, text }, i) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    onClick={(e) => { e.preventDefault(); setOpen(false); setTimeout(() => scrollToId(id), 30) }}
+                  >
+                    <span className="toc-dd-num">{String(i + 1).padStart(2, '0')}</span>
+                    <span>{text}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
       )}
+
+      {btns.map((b) => (
+        <a
+          key={b.targetId}
+          href={`#${b.targetId}`}
+          className={`toc-quick-btn${b.variant === 'solid' ? ' is-solid' : ''}`}
+        >
+          {replaceDateVars(b.text)}
+          <span aria-hidden="true">↓</span>
+        </a>
+      ))}
     </div>
   )
 }
