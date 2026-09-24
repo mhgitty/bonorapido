@@ -1,0 +1,127 @@
+import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
+import { cmsFallbackMetadata, renderCmsFallback } from '@/lib/cmsFallback'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { JsonLd } from '@/components/JsonLd'
+import { ComparisonTable } from '@/components/ComparisonTable'
+import { HreflangLinks } from '@/components/HreflangLinks'
+import { PaymentMethodHero } from '@/components/PaymentMethodHero'
+import { PortableTextRenderer } from '@/components/PortableTextRenderer'
+import { TableOfContents } from '@/components/TableOfContents'
+import { MobileToc } from '@/components/MobileToc'
+import { getPaymentMethodBySlug, client } from '@/lib/sanity'
+import { replaceDateVars } from '@/lib/dateVars'
+import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+import { RelatedPages } from '@/components/RelatedPages'
+import { ComparisonJumpButton } from '@/components/ComparisonJumpButton'
+
+export const revalidate = 3600
+
+const BASE = 'https://bonorapido.com'
+
+interface Props { params: Promise<{ slug: string }> }
+
+export async function generateStaticParams() {
+  const methods = await client.fetch<Array<{ slug: { current: string } }>>(
+    `*[_type == "paymentMethod" && (market == "global" || !defined(market)) && defined(slug.current)] { slug }`
+  ).catch(() => [])
+  return methods.map((m) => ({ slug: m.slug.current }))
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const method = await getPaymentMethodBySlug(slug).catch(() => null)
+  if (!method) return cmsFallbackMetadata('global', ['casinos-online', 'metodos-de-deposito', slug])
+  const title = replaceDateVars(method.metaTitle || `Casinos con ${method.name} — paga con ${method.name}`)
+  const description = replaceDateVars(method.metaDescription || `Encuentra los mejores casinos online que aceptan ${method.name}. Compara tiempos de retirada, comisiones y bonos.`)
+  const canonical = `${BASE}/casinos-online/metodos-de-deposito/${slug}/`
+  const logo = method.logo
+  return { title, description, alternates: { canonical }, openGraph: { title, description, url: canonical, type: 'article', images: logo?.url ? [{ url: logo.url }] : [{ url: `${BASE}/og.png` }] } }
+}
+
+export default async function PaymentSlugPage({ params }: Props) {
+  const { slug } = await params
+  const method = await getPaymentMethodBySlug(slug).catch(() => null)
+  if (!method) {
+    // No typed doc — render the CMS page at the same path (imported WP pages)
+    const fallback = await renderCmsFallback('global', ['casinos-online', 'metodos-de-deposito', slug])
+    if (!fallback) notFound()
+    return fallback
+  }
+
+  const canonical = `${BASE}/casinos-online/metodos-de-deposito/${slug}/`
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio',            item: `${BASE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Casino online',   item: `${BASE}/casinos-online/` },
+      { '@type': 'ListItem', position: 3, name: 'Métodos de pago', item: `${BASE}/casinos-online/metodos-de-deposito/` },
+      { '@type': 'ListItem', position: 4, name: slug.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()), item: canonical },
+    ],
+  }
+
+  return (
+    <>
+      <Navbar />
+      <JsonLd data={jsonLd} />
+      <HreflangLinks docId={(method as any)._id} />
+
+      {/* Breadcrumbs (above hero card) */}
+      <div style={{ background: 'var(--bg-hero)', paddingTop: '32px', paddingBottom: '0' }}>
+        <div style={{ maxWidth: '1250px', margin: '0 auto', padding: '0 15px' }}>
+          <Breadcrumbs crumbs={[
+            { label: 'Inicio',            href: '/' },
+            { label: 'Casino online',   href: '/casinos-online/' },
+            { label: 'Métodos de pago', href: '/casinos-online/metodos-de-deposito/' },
+            { label: slug.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()) },
+          ]} />
+        </div>
+      </div>
+
+      {/* Hero card */}
+      <PaymentMethodHero
+        name={method.name}
+        titel={replaceDateVars(method.titel)}
+        logo={method.logo}
+        paymentCategory={method.paymentCategory}
+        withdrawalTime={method.withdrawalTime}
+        transactionFees={method.transactionFees}
+        eligibleForBonuses={method.eligibleForBonuses}
+        intro={method.intro}
+      />
+
+      {/* Comparison table — configured on the CMS document in Sanity Studio */}
+      <ComparisonJumpButton data={method} />
+      {(method as any).showComparisonTable && (method as any).comparisonTable && (
+        <div className="section" style={{ paddingBottom: (method.body && method.body.length > 0) ? '0' : undefined }}>
+          {(method as any).comparisonTableTitle && (
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(20px, 2.5vw, 28px)', fontWeight: 700, color: 'var(--text)', marginBottom: '20px' }}>
+              {replaceDateVars((method as any).comparisonTableTitle)}
+            </h2>
+          )}
+          <ComparisonTable data={(method as any).comparisonTable} />
+        </div>
+      )}
+
+      {/* Body content */}
+      {method.body && method.body.length > 0 && (
+        <div className="article-layout">
+          <article className="article-content">
+            <MobileToc body={method.body} />
+            <PortableTextRenderer value={method.body} />
+          </article>
+          <aside className="toc-sidebar">
+            <TableOfContents body={method.body} />
+          </aside>
+        </div>
+      )}
+
+      <RelatedPages docId={method?._id} />
+
+      <Footer />
+    </>
+  )
+}

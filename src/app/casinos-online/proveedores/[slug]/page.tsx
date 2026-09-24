@@ -1,3 +1,5 @@
+import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { JsonLd } from '@/components/JsonLd'
 import { ComparisonTable } from '@/components/ComparisonTable'
@@ -60,6 +62,7 @@ export default async function SoftwareSlugPage({ params }: Props) {
 
   return (
     <>
+      <Navbar />
       <JsonLd data={jsonLd} />
       <HreflangLinks docId={(provider as any)._id} />
 
@@ -164,6 +167,7 @@ export default async function SoftwareSlugPage({ params }: Props) {
       )}
       <RelatedPages docId={provider?._id} />
 
+      <Footer />
     </>
   )
 }

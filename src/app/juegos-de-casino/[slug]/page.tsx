@@ -1,3 +1,5 @@
+import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { cmsFallbackMetadata, renderCmsFallback } from '@/lib/cmsFallback'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { JsonLd } from '@/components/JsonLd'
@@ -58,6 +60,7 @@ export default async function CasinoGamePage({ params }: Props) {
 
   return (
     <>
+      <Navbar />
       <JsonLd data={jsonLd} />
       <HreflangLinks docId={(game as any)._id} />
 
@@ -145,6 +148,7 @@ export default async function CasinoGamePage({ params }: Props) {
       )}
       <RelatedPages docId={game?._id} />
 
+      <Footer />
     </>
   )
 }
