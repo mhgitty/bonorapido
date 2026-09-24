@@ -67,7 +67,7 @@ const linkFields = [
     name: 'url',
     title: 'URL (custom / external)',
     type: 'string',
-    description: 'Only used if you don\'t select a reference above. E.g. /ar/casino-online/resenas/ or https://...',
+    description: 'Only used if you don\'t select a reference above. E.g. /ar/casinos-online/resenas/ or https://...',
   }),
 ]
 
@@ -84,9 +84,9 @@ const linkPreview = {
   },
   prepare({ title, pageRef, bookmakerRef, softwareRef, paymentMethodRef, postRef, casinoGuideRef, url }: any) {
     const resolved = pageRef ? `/${pageRef}/`
-      : bookmakerRef ? `/casino-online/resenas/${bookmakerRef}/`
-      : softwareRef ? `/casino-online/proveedores/${softwareRef}/`
-      : paymentMethodRef ? `/casino-online/metodos-de-pago/${paymentMethodRef}/`
+      : bookmakerRef ? `/casinos-online/resenas/${bookmakerRef}/`
+      : softwareRef ? `/casinos-online/proveedores/${softwareRef}/`
+      : paymentMethodRef ? `/casinos-online/metodos-de-deposito/${paymentMethodRef}/`
       : postRef ? `/${postRef}/`
       : casinoGuideRef ? `/guias-casino/${casinoGuideRef}/`
       : url
@@ -157,9 +157,9 @@ const navItemFields = [
         },
         prepare({ title, pageRef, bookmakerRef, softwareRef, paymentMethodRef, postRef, url }: any) {
           const resolved = pageRef ? `/${pageRef}/`
-            : bookmakerRef ? `/casino-online/resenas/${bookmakerRef}/`
-            : softwareRef ? `/casino-online/proveedores/${softwareRef}/`
-            : paymentMethodRef ? `/casino-online/metodos-de-pago/${paymentMethodRef}/`
+            : bookmakerRef ? `/casinos-online/resenas/${bookmakerRef}/`
+            : softwareRef ? `/casinos-online/proveedores/${softwareRef}/`
+            : paymentMethodRef ? `/casinos-online/metodos-de-deposito/${paymentMethodRef}/`
             : postRef ? `/${postRef}/`
             : url
           return { title, subtitle: resolved }
@@ -215,9 +215,9 @@ export const marketSettingsType = defineType({
           },
           prepare({ title, isHighlighted, pageRef, bookmakerRef, softwareRef, paymentMethodRef, postRef, url }: any) {
             const resolved = pageRef ? `/${pageRef}/`
-              : bookmakerRef ? `/casino-online/resenas/${bookmakerRef}/`
-              : softwareRef ? `/casino-online/proveedores/${softwareRef}/`
-              : paymentMethodRef ? `/casino-online/metodos-de-pago/${paymentMethodRef}/`
+              : bookmakerRef ? `/casinos-online/resenas/${bookmakerRef}/`
+              : softwareRef ? `/casinos-online/proveedores/${softwareRef}/`
+              : paymentMethodRef ? `/casinos-online/metodos-de-deposito/${paymentMethodRef}/`
               : postRef ? `/${postRef}/`
               : url
             return { title: `${isHighlighted ? '⚡ ' : ''}${title}`, subtitle: resolved }
@@ -285,9 +285,9 @@ export const marketSettingsType = defineType({
                 },
                 prepare({ title, pageRef, bookmakerRef, softwareRef, paymentMethodRef, postRef, url }: any) {
                   const resolved = pageRef ? `/${pageRef}/`
-                    : bookmakerRef ? `/casino-online/resenas/${bookmakerRef}/`
-                    : softwareRef ? `/casino-online/proveedores/${softwareRef}/`
-                    : paymentMethodRef ? `/casino-online/metodos-de-pago/${paymentMethodRef}/`
+                    : bookmakerRef ? `/casinos-online/resenas/${bookmakerRef}/`
+                    : softwareRef ? `/casinos-online/proveedores/${softwareRef}/`
+                    : paymentMethodRef ? `/casinos-online/metodos-de-deposito/${paymentMethodRef}/`
                     : postRef ? `/${postRef}/`
                     : url
                   return { title, subtitle: resolved }

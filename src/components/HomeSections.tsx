@@ -439,10 +439,10 @@ export async function HomeSections({ sections, market }: { sections: AnySection[
       : Promise.resolve([]),
   ])
 
-  const reviewBase = market === 'ar' ? '/ar/casino-online/resenas' : '/mx/casino-online/resenas'
-  const listBase   = market === 'ar' ? '/ar/casino-online/resenas/' : '/mx/casino-online/resenas/'
-  const payBase    = market === 'ar' ? '/ar/casino-online/metodos-de-pago' : '/mx/casino-online/metodos-de-pago'
-  const softBase   = market === 'ar' ? '/ar/casino-online/proveedores' : '/mx/casino-online/proveedores'
+  const reviewBase = market === 'ar' ? '/ar/casinos-online/resenas' : '/mx/casinos-online/resenas'
+  const listBase   = market === 'ar' ? '/ar/casinos-online/resenas/' : '/mx/casinos-online/resenas/'
+  const payBase    = market === 'ar' ? '/ar/casinos-online/metodos-de-deposito' : '/mx/casinos-online/metodos-de-deposito'
+  const softBase   = market === 'ar' ? '/ar/casinos-online/proveedores' : '/mx/casinos-online/proveedores'
   const guideBase  = market === 'ar' ? '/ar/guias-casino' : '/mx/guias-casino'
 
   return (

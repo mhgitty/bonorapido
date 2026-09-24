@@ -22,8 +22,8 @@ function resolveUrl(item: {
     return `/${segments.join('/')}/`
   }
   if (item.bookmakerSlug) return `/resenas/${item.bookmakerSlug}/`
-  if (item.softwareSlug) return `/casino-online/proveedores/${item.softwareSlug}/`
-  if (item.paymentMethodSlug) return `/casino-online/metodos-de-pago/${item.paymentMethodSlug}/`
+  if (item.softwareSlug) return `/casinos-online/proveedores/${item.softwareSlug}/`
+  if (item.paymentMethodSlug) return `/casinos-online/metodos-de-deposito/${item.paymentMethodSlug}/`
   if (item.postSlug) return `/${item.postSlug}/`
   if (item.casinoGuideSlug) {
     const gp = item.casinoGuideMarket === 'ar' ? '/ar' : item.casinoGuideMarket === 'mx' ? '/mx' : ''

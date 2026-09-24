@@ -34,18 +34,18 @@ function indexPages(scope: Scope): SitemapEntry[] {
   if (wantGlobal) out.push(
     { url: `${BASE}/` },
     { url: `${BASE}/resenas/` },
-    { url: `${BASE}/casino-online/metodos-de-pago/` },
-    { url: `${BASE}/casino-online/proveedores/` },
+    { url: `${BASE}/casinos-online/metodos-de-deposito/` },
+    { url: `${BASE}/casinos-online/proveedores/` },
     { url: `${BASE}/guias-casino/` },
   )
   for (const [want, mp] of [[wantAr, '/ar'], [wantMx, '/mx']] as const) {
     if (!want) continue
     out.push(
       { url: `${BASE}${mp}/` },
-      { url: `${BASE}${mp}/casino-online/resenas/` },
-      { url: `${BASE}${mp}/casino-online/bonos/` },
-      { url: `${BASE}${mp}/casino-online/metodos-de-pago/` },
-      { url: `${BASE}${mp}/casino-online/proveedores/` },
+      { url: `${BASE}${mp}/casinos-online/resenas/` },
+      { url: `${BASE}${mp}/bonos-de-casino/` },
+      { url: `${BASE}${mp}/casinos-online/metodos-de-deposito/` },
+      { url: `${BASE}${mp}/casinos-online/proveedores/` },
       { url: `${BASE}${mp}/guias-casino/` },
     )
   }
@@ -79,7 +79,7 @@ export async function sitemapEntries(scope: Scope): Promise<SitemapEntry[]> {
   ])
 
   const reviewUrl = (mp: string, slug: string) =>
-    mp ? `${BASE}${mp}/casino-online/resenas/${slug}/` : `${BASE}/resenas/${slug}/`
+    mp ? `${BASE}${mp}/casinos-online/resenas/${slug}/` : `${BASE}/resenas/${slug}/`
 
   return [
     ...indexPages(scope),
@@ -88,11 +88,11 @@ export async function sitemapEntries(scope: Scope): Promise<SitemapEntry[]> {
       ...lastMod(p._updatedAt),
     })),
     ...bookmakers.map((b) => ({ url: reviewUrl(marketPrefix(b.market), b.slug.current), ...lastMod(b._updatedAt) })),
-    ...paymentMethods.map((m) => ({ url: `${BASE}${marketPrefix(m.market)}/casino-online/metodos-de-pago/${m.slug.current}/`, ...lastMod(m._updatedAt) })),
-    ...software.map((s) => ({ url: `${BASE}${marketPrefix(s.market)}/casino-online/proveedores/${s.slug.current}/`, ...lastMod(s._updatedAt) })),
+    ...paymentMethods.map((m) => ({ url: `${BASE}${marketPrefix(m.market)}/casinos-online/metodos-de-deposito/${m.slug.current}/`, ...lastMod(m._updatedAt) })),
+    ...software.map((s) => ({ url: `${BASE}${marketPrefix(s.market)}/casinos-online/proveedores/${s.slug.current}/`, ...lastMod(s._updatedAt) })),
     ...casinoGuides.map((g) => ({ url: `${BASE}${marketPrefix(g.market)}/guias-casino/${g.slug.current}/`, ...lastMod(g._updatedAt) })),
     ...slots.map((s) => ({ url: `${BASE}${marketPrefix(s.market)}/tragamonedas/${s.slug.current}/`, ...lastMod(s._updatedAt) })),
-    ...bonusser.map((b) => ({ url: `${BASE}${marketPrefix(b.market)}/casino-online/bonos/${b.slug.current}/`, ...lastMod(b._updatedAt) })),
+    ...bonusser.map((b) => ({ url: `${BASE}${marketPrefix(b.market)}/bonos-de-casino/${b.slug.current}/`, ...lastMod(b._updatedAt) })),
     ...posts.map((p) => ({ url: `${BASE}/${p.slug.current}/`, ...lastMod(p.lastUpdated ?? p.publishedAt) })),
   ]
 }

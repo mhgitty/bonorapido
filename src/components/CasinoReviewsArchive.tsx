@@ -16,7 +16,7 @@ interface Casino {
 
 interface Props {
   casinos?: Casino[]
-  /** Prefix for the review link, e.g. "/ar/casino-online/resenas". */
+  /** Prefix for the review link, e.g. "/ar/casinos-online/resenas". */
   hrefPrefix?: string
   title?: string
   /** Optional rich text rendered between the heading and the list. */

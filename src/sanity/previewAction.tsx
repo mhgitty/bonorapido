@@ -61,22 +61,22 @@ export const previewAction: DocumentActionComponent = (
       break
     case 'bookmaker':
       url = slug
-        ? mp ? `${BASE}${mp}/casino-online/resenas/${slug}/` : `${BASE}/resenas/${slug}/`
-        : mp ? `${BASE}${mp}/casino-online/resenas/` : `${BASE}/resenas/`
+        ? mp ? `${BASE}${mp}/casinos-online/resenas/${slug}/` : `${BASE}/resenas/${slug}/`
+        : mp ? `${BASE}${mp}/casinos-online/resenas/` : `${BASE}/resenas/`
       break
     case 'bonus':
-      url = slug ? `${BASE}${mp}/casino-online/bonos/${slug}/` : `${BASE}${mp}/casino-online/bonos/`
+      url = slug ? `${BASE}${mp}/bonos-de-casino/${slug}/` : `${BASE}${mp}/bonos-de-casino/`
       break
     case 'paymentMethod':
-      url = slug ? `${BASE}${mp}/casino-online/metodos-de-pago/${slug}/` : `${BASE}${mp}/casino-online/metodos-de-pago/`
+      url = slug ? `${BASE}${mp}/casinos-online/metodos-de-deposito/${slug}/` : `${BASE}${mp}/casinos-online/metodos-de-deposito/`
       break
     case 'software':
       url = slug
-        ? `${BASE}${mp}/casino-online/proveedores/${slug}/`
-        : `${BASE}${mp}/casino-online/proveedores/`
+        ? `${BASE}${mp}/casinos-online/proveedores/${slug}/`
+        : `${BASE}${mp}/casinos-online/proveedores/`
       break
     case 'casinoGame':
-      url = slug ? `${BASE}${mp}/juegos-casino/${slug}/` : `${BASE}${mp}/juegos-casino/`
+      url = slug ? `${BASE}${mp}/juegos-de-casino/${slug}/` : `${BASE}${mp}/juegos-de-casino/`
       break
     case 'casinoGuide':
       url = slug ? `${BASE}${mp}/guias-casino/${slug}/` : `${BASE}${mp}/guias-casino/`

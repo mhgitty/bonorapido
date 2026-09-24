@@ -14,8 +14,8 @@ function hrefFor(item: ProviderBoxItem, market?: string): string {
   const mp = market === 'ar' ? '/ar' : market === 'mx' ? '/mx' : ''
   const segment = item._type === 'software' ? 'software' : 'payment'
   const slug = item.slug?.current
-  if (!slug) return `${mp}/casino-online/${segment}/`
-  return `${mp}/casino-online/${segment}/${slug}/`
+  if (!slug) return `${mp}/casinos-online/${segment}/`
+  return `${mp}/casinos-online/${segment}/${slug}/`
 }
 
 export async function ProviderBox({ value }: ProviderBoxProps) {

@@ -17,7 +17,7 @@ import { RelatedPages } from '@/components/RelatedPages'
 export const revalidate = 3600
 
 const BASE = 'https://bonorapido.com'
-const CANONICAL = `${BASE}/casino-online/resenas/`
+const CANONICAL = `${BASE}/casinos-online/resenas/`
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug('resenas').catch(() => null)

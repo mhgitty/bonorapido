@@ -9,13 +9,13 @@ Sanity `market` values: `global`, `ar`, `mx`.
 | URL | Sanity page slug (per market) |
 |---|---|
 | `/resenas/` · `/resenas/[casino]/` | page `resenas` |
-| `/{ar,mx}/casino-online/resenas/` | `casino-online` › `resenas` |
-| `/{ar,mx}/casino-online/bonos/` | `casino-online` › `bonos` |
-| `/[mkt]/casino-online/metodos-de-pago/` | `casino-online` › `metodos-de-pago` |
-| `/[mkt]/casino-online/proveedores/` | `casino-online` › `proveedores` |
+| `/{ar,mx}/casinos-online/resenas/` | `casinos-online` › `resenas` |
+| `/{ar,mx}/bonos-de-casino/` | `bonos-de-casino` |
+| `/[mkt]/casinos-online/metodos-de-deposito/` | `casinos-online` › `metodos-de-deposito` |
+| `/[mkt]/casinos-online/proveedores/` | `casinos-online` › `proveedores` |
 | `/[mkt]/tragamonedas/` | `tragamonedas` |
 | `/[mkt]/guias-casino/` | `guias-casino` |
-| `/[mkt]/juegos-casino/[slug]/` | casinoGame docs |
+| `/[mkt]/juegos-de-casino/[slug]/` | casinoGame doc, else page `juegos-de-casino` › slug |
 | `/noticias/`, `/autor/[slug]/`, `/futbol/clasificaciones/[slug]/` | posts / authors / ligaStillinger |
 | `/go/[code]/`, `/{ar,mx}/go/[code]/` | redirect docs (affiliate links) |
 

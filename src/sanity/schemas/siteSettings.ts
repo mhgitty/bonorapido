@@ -69,8 +69,8 @@ const linkPreview = {
   prepare({ title, pageRef, bookmakerRef, softwareRef, paymentMethodRef, postRef, casinoGuideRef, url }: any) {
     const resolved = pageRef ? `/${pageRef}/`
       : bookmakerRef ? `/resenas/${bookmakerRef}/`
-      : softwareRef ? `/casino-online/proveedores/${softwareRef}/`
-      : paymentMethodRef ? `/casino-online/metodos-de-pago/${paymentMethodRef}/`
+      : softwareRef ? `/casinos-online/proveedores/${softwareRef}/`
+      : paymentMethodRef ? `/casinos-online/metodos-de-deposito/${paymentMethodRef}/`
       : postRef ? `/${postRef}/`
       : casinoGuideRef ? `/guias-casino/${casinoGuideRef}/`
       : url
@@ -144,8 +144,8 @@ const navItemFields = [
         prepare({ title, pageRef, bookmakerRef, softwareRef, paymentMethodRef, postRef, url }: any) {
           const resolved = pageRef ? `/${pageRef}/`
             : bookmakerRef ? `/resenas/${bookmakerRef}/`
-            : softwareRef ? `/casino-online/proveedores/${softwareRef}/`
-            : paymentMethodRef ? `/casino-online/metodos-de-pago/${paymentMethodRef}/`
+            : softwareRef ? `/casinos-online/proveedores/${softwareRef}/`
+            : paymentMethodRef ? `/casinos-online/metodos-de-deposito/${paymentMethodRef}/`
             : postRef ? `/${postRef}/`
             : url
           return { title, subtitle: resolved }
@@ -230,8 +230,8 @@ export const siteSettingsType = defineType({
           prepare({ title, isHighlighted, pageRef, bookmakerRef, softwareRef, paymentMethodRef, postRef, url, children }: any) {
             const resolvedUrl = pageRef ? `/${pageRef}/`
               : bookmakerRef ? `/resenas/${bookmakerRef}/`
-              : softwareRef ? `/casino-online/proveedores/${softwareRef}/`
-              : paymentMethodRef ? `/casino-online/metodos-de-pago/${paymentMethodRef}/`
+              : softwareRef ? `/casinos-online/proveedores/${softwareRef}/`
+              : paymentMethodRef ? `/casinos-online/metodos-de-deposito/${paymentMethodRef}/`
               : postRef ? `/${postRef}/`
               : url
             const hasChildren = children?.length > 0
@@ -305,8 +305,8 @@ export const siteSettingsType = defineType({
                 prepare({ title, pageRef, bookmakerRef, softwareRef, paymentMethodRef, postRef, url }: any) {
                   const resolved = pageRef ? `/${pageRef}/`
                     : bookmakerRef ? `/resenas/${bookmakerRef}/`
-                    : softwareRef ? `/casino-online/proveedores/${softwareRef}/`
-                    : paymentMethodRef ? `/casino-online/metodos-de-pago/${paymentMethodRef}/`
+                    : softwareRef ? `/casinos-online/proveedores/${softwareRef}/`
+                    : paymentMethodRef ? `/casinos-online/metodos-de-deposito/${paymentMethodRef}/`
                     : postRef ? `/${postRef}/`
                     : url
                   return { title, subtitle: resolved }

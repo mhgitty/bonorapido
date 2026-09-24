@@ -191,11 +191,11 @@ function RankCircle({ rank }: { rank: number }) {
 }
 
 function CasinoRow({ casino, currency, rank }: { casino: Casino; currency: string; rank: number }) {
-  // Review URL follows the casino's market: AR/MX live under /{market}/casino-online/resenas/,
+  // Review URL follows the casino's market: AR/MX live under /{market}/casinos-online/resenas/,
   // global casinos under /resenas/.
   const mp = casino.market === 'ar' ? '/ar' : casino.market === 'mx' ? '/mx' : ''
   const reviewHref = mp
-    ? `${mp}/casino-online/resenas/${casino.slug.current}/`
+    ? `${mp}/casinos-online/resenas/${casino.slug.current}/`
     : `/resenas/${casino.slug.current}/`
   const hasStats = casino.minIndbetaling != null || !!casino.gennemspilskrav
   const terms = casino.terms || DEFAULT_TERMS

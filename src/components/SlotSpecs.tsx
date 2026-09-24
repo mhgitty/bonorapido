@@ -54,7 +54,7 @@ export function SlotSpecs({ slot, title = 'Características y estadísticas clav
   // Provider — reference; render as a link to the provider page when possible.
   if (slot.provider?.name) {
     const mp = slot.provider.market === 'ar' ? '/ar' : slot.provider.market === 'mx' ? '/mx' : ''
-    const href = slot.provider.slug ? `${mp}/casino-online/proveedores/${slot.provider.slug}/` : null
+    const href = slot.provider.slug ? `${mp}/casinos-online/proveedores/${slot.provider.slug}/` : null
     stats.push({
       icon: 'provider',
       label: 'Software',

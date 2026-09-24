@@ -25,12 +25,12 @@ function resolveEditUrl(pathname: string): string | null {
   const reviewMatch = p.match(/^\/resenas\/([^/]+)$/)
   if (reviewMatch) return `${s}/type=bookmaker,slug.current=="${reviewMatch[1]}"/`
 
-  // AR review  /ar/casino-online/resenas/[slug]
-  const arReviewMatch = p.match(/^\/ar\/casino-online\/resenas\/([^/]+)$/)
+  // AR review  /ar/casinos-online/resenas/[slug]
+  const arReviewMatch = p.match(/^\/ar\/casinos-online\/resenas\/([^/]+)$/)
   if (arReviewMatch) return `${s}/type=bookmaker,slug.current=="${arReviewMatch[1]}"/`
 
-  // MX review  /mx/casino-online/resenas/[slug]
-  const mxReviewMatch = p.match(/^\/mx\/casino-online\/resenas\/([^/]+)$/)
+  // MX review  /mx/casinos-online/resenas/[slug]
+  const mxReviewMatch = p.match(/^\/mx\/casinos-online\/resenas\/([^/]+)$/)
   if (mxReviewMatch) return `${s}/type=bookmaker,slug.current=="${mxReviewMatch[1]}"/`
 
   // Global page  /[slug] or /[parent]/[slug]

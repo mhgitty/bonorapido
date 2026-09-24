@@ -30,3 +30,4 @@ Thumbs.db
 # editors
 .vscode/
 .idea/
+scripts/.import-preview.json

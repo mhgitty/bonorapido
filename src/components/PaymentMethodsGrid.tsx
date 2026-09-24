@@ -27,7 +27,7 @@ function StatRow({ icon, label, value }: { icon: string; label: string; value?: 
 
 export function PaymentMethodsGrid({
   methods,
-  hrefPrefix = '/casino-online/metodos-de-pago',
+  hrefPrefix = '/casinos-online/metodos-de-deposito',
 }: {
   methods: PaymentMethod[]
   hrefPrefix?: string

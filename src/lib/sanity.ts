@@ -249,7 +249,7 @@ function buildAncestorFilter(segments: string[]): { conditions: string; params: 
   // Anchor the chain to the root: the topmost matched segment must itself have
   // no parent. Without this, a partial path matches a deeper page — e.g.
   // /ar/bonus/no-deposit/ would match the page that actually lives at
-  // /ar/casino-online/bonos/no-deposit/, since only the immediate parent is checked.
+  // /ar/bonos-de-casino/no-deposit/, since only the immediate parent is checked.
   conditions.push(`!defined(${'parent->'.repeat(segments.length - 1)}parent)`)
   return { conditions: conditions.join(' && '), params }
 }
@@ -504,15 +504,15 @@ export function relatedItemHref(item: RelatedItem): string {
     case 'slotmachine':
       return `${mp}/tragamonedas/${slug}/`
     case 'paymentMethod':
-      return `${mp}/casino-online/metodos-de-pago/${slug}/`
+      return `${mp}/casinos-online/metodos-de-deposito/${slug}/`
     case 'software':
-      return `${mp}/casino-online/proveedores/${slug}/`
+      return `${mp}/casinos-online/proveedores/${slug}/`
     case 'bonus':
-      return `${mp}/casino-online/bonos/${slug}/`
+      return `${mp}/bonos-de-casino/${slug}/`
     case 'bookmaker':
-      return mp ? `${mp}/casino-online/resenas/${slug}/` : `/resenas/${slug}/`
+      return mp ? `${mp}/casinos-online/resenas/${slug}/` : `/resenas/${slug}/`
     case 'casinoGame':
-      return `${mp}/juegos-casino/${slug}/`
+      return `${mp}/juegos-de-casino/${slug}/`
     case 'post':
       return `/${slug}/`
     default:

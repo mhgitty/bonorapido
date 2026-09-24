@@ -12,9 +12,9 @@ function resolveUrl(item: {
     const segments = [item.pageParent4Slug, item.pageParent3Slug, item.pageParent2Slug, item.pageParentSlug, item.pageSlug].filter(Boolean)
     return `${prefix}/${segments.join('/')}/`
   }
-  if (item.bookmakerSlug) return `/mx/casino-online/resenas/${item.bookmakerSlug}/`
-  if (item.softwareSlug) return `/mx/casino-online/proveedores/${item.softwareSlug}/`
-  if (item.paymentMethodSlug) return `/mx/casino-online/metodos-de-pago/${item.paymentMethodSlug}/`
+  if (item.bookmakerSlug) return `/mx/casinos-online/resenas/${item.bookmakerSlug}/`
+  if (item.softwareSlug) return `/mx/casinos-online/proveedores/${item.softwareSlug}/`
+  if (item.paymentMethodSlug) return `/mx/casinos-online/metodos-de-deposito/${item.paymentMethodSlug}/`
   if (item.postSlug) return `/${item.postSlug}/`
   if (item.casinoGuideSlug) {
     const gp = item.casinoGuideMarket === 'ar' ? '/ar' : item.casinoGuideMarket === 'mx' ? '/mx' : ''

@@ -30,11 +30,11 @@ export async function POST(req: NextRequest) {
       revalidatePath('/resenas/[slug]', 'page')
       if (slug) { revalidatePath(`/resenas/${slug}/`, 'page'); specific.push(`/resenas/${slug}/`) }
     } else if (type === 'bonus') {
-      revalidatePath('/ar/casino-online/bonos/[slug]', 'page')
-      revalidatePath('/mx/casino-online/bonos/[slug]', 'page')
+      revalidatePath('/ar/bonos-de-casino/[slug]', 'page')
+      revalidatePath('/mx/bonos-de-casino/[slug]', 'page')
       if (slug) {
-        revalidatePath(`/ar/casino-online/bonos/${slug}/`, 'page'); specific.push(`/ar/casino-online/bonos/${slug}/`)
-        revalidatePath(`/mx/casino-online/bonos/${slug}/`, 'page'); specific.push(`/mx/casino-online/bonos/${slug}/`)
+        revalidatePath(`/ar/bonos-de-casino/${slug}/`, 'page'); specific.push(`/ar/bonos-de-casino/${slug}/`)
+        revalidatePath(`/mx/bonos-de-casino/${slug}/`, 'page'); specific.push(`/mx/bonos-de-casino/${slug}/`)
       }
     }
 
