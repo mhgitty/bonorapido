@@ -1233,9 +1233,9 @@ button[style*="var(--green)"]:hover, a[style*="var(--green)"]:hover { filter: br
 .toc-sidebar { display: none !important; }
 .mobile-toc.article-toolbar {
   display: flex !important; flex-wrap: wrap; align-items: center; gap: 10px;
-  margin: 0 0 30px; background: none; border: 0; overflow: visible;
+  margin: 0 0 30px; background: none; border: 0; overflow: visible; position: relative;
 }
-.toc-dd { position: relative; flex: 0 1 340px; min-width: 240px; }
+.toc-dd { position: static; flex: 0 1 340px; min-width: 240px; }
 .toc-dd-btn {
   width: 100%; display: flex; align-items: center; gap: 10px;
   padding: 11px 14px; border-radius: 10px; cursor: pointer;
@@ -1249,7 +1249,7 @@ button[style*="var(--green)"]:hover, a[style*="var(--green)"]:hover { filter: br
 }
 .toc-dd-panel {
   position: absolute; top: calc(100% + 8px); left: 0; z-index: 30;
-  width: min(760px, calc(100vw - 30px)); max-height: min(60vh, 520px); overflow-y: auto;
+  width: min(760px, 100%); max-height: min(60vh, 520px); overflow-y: auto;
   list-style: none; margin: 0; padding: 10px;
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 12px;
   background: #262c55; border: 1px solid var(--border); border-radius: 12px;

@@ -30,7 +30,7 @@ function scrollToId(id: string) {
 
 /**
  * Article toolbar at the top of the body: a compact "Índice" dropdown (table of
- * contents) with the page's quick-link buttons inline next to it.
+ * contents), placed after the page's quick-link buttons on the same row.
  */
 export function MobileToc({ body, buttons }: { body: any[]; buttons?: QuickButton[] | null }) {
   const [open, setOpen] = useState(false)
@@ -52,6 +52,17 @@ export function MobileToc({ body, buttons }: { body: any[]; buttons?: QuickButto
 
   return (
     <div className="mobile-toc article-toolbar">
+      {btns.map((b) => (
+        <a
+          key={b.targetId}
+          href={`#${b.targetId}`}
+          className={`toc-quick-btn${b.variant === 'solid' ? ' is-solid' : ''}`}
+        >
+          {replaceDateVars(b.text)}
+          <span aria-hidden="true">↓</span>
+        </a>
+      ))}
+
       {headings.length > 0 && (
         <div className="toc-dd" ref={ref}>
           <button
@@ -84,16 +95,6 @@ export function MobileToc({ body, buttons }: { body: any[]; buttons?: QuickButto
         </div>
       )}
 
-      {btns.map((b) => (
-        <a
-          key={b.targetId}
-          href={`#${b.targetId}`}
-          className={`toc-quick-btn${b.variant === 'solid' ? ' is-solid' : ''}`}
-        >
-          {replaceDateVars(b.text)}
-          <span aria-hidden="true">↓</span>
-        </a>
-      ))}
     </div>
   )
 }
