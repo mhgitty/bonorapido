@@ -1375,13 +1375,15 @@ html.is-scrolled .navbar { background: #1e1f36; border-bottom-color: rgba(255,25
 .pc-card--cons::after { background: #ef4444; }
 /* Mascot "pops out" of a coloured disc: the hat rises above the circle, the body is cut by the disc's bottom curve */
 .pc-mascot {
-  position: relative; z-index: 1; flex-shrink: 0; width: 240px; height: 192px; margin: -12px -44px -8px -46px;
-  clip-path: path('M0 0 H240 V124 H188 A68 68 0 0 1 52 124 H0 Z');
+  position: relative; z-index: 1; flex-shrink: 0; width: 240px; height: 192px; margin: -12px -30px -8px -24px;
+  /* visible = the disc + everything above it, fading out softly below (no hard cuts on hands / money bag) */
+  -webkit-mask: radial-gradient(circle 68px at 120px 124px, #000 98%, transparent 100%), linear-gradient(to bottom, #000 145px, transparent 184px);
+          mask: radial-gradient(circle 68px at 120px 124px, #000 98%, transparent 100%), linear-gradient(to bottom, #000 145px, transparent 184px);
 }
 .pc-mascot-disc { position: absolute; left: 52px; top: 56px; width: 136px; height: 136px; border-radius: 50%; }
 .pc-card--pros .pc-mascot-disc { background: radial-gradient(circle at 35% 30%, #5fe39c 0%, #2fbf71 55%, #1f8f53 100%); box-shadow: inset 0 -8px 18px rgba(0,0,0,0.25); }
 .pc-card--cons .pc-mascot-disc { background: radial-gradient(circle at 35% 30%, #ff8a8a 0%, #ef4444 55%, #b82f2f 100%); box-shadow: inset 0 -8px 18px rgba(0,0,0,0.25); }
-.pc-mascot img { position: absolute; left: 50%; top: 30px; width: 232px; height: auto; transform: translateX(-50%); filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35)); }
+.pc-mascot img { position: absolute; left: 50%; top: 22px; width: 228px; height: auto; transform: translateX(-50%); filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35)); }
 .pc-body { position: relative; z-index: 1; min-width: 0; flex: 1; padding-top: 4px; }
 .pc-kicker { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
 .pc-card--pros .pc-kicker { color: #4fd98f; }
@@ -1393,6 +1395,6 @@ html.is-scrolled .navbar { background: #1e1f36; border-bottom-color: rgba(255,25
 .pc-card--cons .pc-ico { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,0.15); }
 @media (max-width: 560px) {
   .pc-card { flex-direction: column; gap: 6px; padding: 26px 20px 22px; }
-  .pc-mascot { margin: -12px 0 0 -46px; }
+  .pc-mascot { margin: -12px 0 0 -22px; }
 }
 .pc-label { color: var(--text); font-weight: 700; }

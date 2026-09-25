@@ -16,7 +16,7 @@ function Card({ kind, items }: { kind: 'pros' | 'cons'; items: string[] }) {
     <div className={`pc-card pc-card--${kind}`}>
       <div className="pc-mascot" aria-hidden="true">
         <span className="pc-mascot-disc" />
-        <img src={`/mascot/${kind}.webp`} alt="" width={520} height={310} loading="lazy" />
+        <img src={`/mascot/${kind}.webp`} alt="" width={480} height={pros ? 391 : 380} loading="lazy" />
       </div>
       <div className="pc-body">
         <div className="pc-kicker">{pros ? 'Ventajas' : 'Desventajas'}</div>
