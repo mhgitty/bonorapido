@@ -3,6 +3,13 @@ interface ProsConsBlockProps { value: { title?: string; pros?: string[]; cons?: 
 const CHECK = <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
 const CROSS = <svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" /></svg>
 
+/** "Label: text" → bold label + text (keeps imported WordPress formatting). */
+function Item({ text }: { text: string }) {
+  const m = text.match(/^([^:]{2,40}):\s+(.+)$/)
+  if (!m) return <span>{text}</span>
+  return <span><strong className="pc-label">{m[1]}:</strong> {m[2]}</span>
+}
+
 function Card({ kind, items }: { kind: 'pros' | 'cons'; items: string[] }) {
   const pros = kind === 'pros'
   return (
@@ -17,7 +24,7 @@ function Card({ kind, items }: { kind: 'pros' | 'cons'; items: string[] }) {
           {items.map((t, i) => (
             <li key={i}>
               <span className="pc-ico">{pros ? CHECK : CROSS}</span>
-              <span>{t}</span>
+              <Item text={t} />
             </li>
           ))}
         </ul>

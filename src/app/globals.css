@@ -1387,7 +1387,7 @@ html.is-scrolled .navbar { background: #1e1f36; border-bottom-color: rgba(255,25
 .pc-card--pros .pc-kicker { color: #4fd98f; }
 .pc-card--cons .pc-kicker { color: #ff7b7b; }
 .pc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-.pc-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; line-height: 1.55; color: var(--text); }
+.pc-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; line-height: 1.55; color: var(--text-muted); }
 .pc-ico { flex-shrink: 0; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; }
 .pc-card--pros .pc-ico { background: #2fbf71; box-shadow: 0 0 0 4px rgba(47,191,113,0.15); }
 .pc-card--cons .pc-ico { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,0.15); }
@@ -1395,3 +1395,4 @@ html.is-scrolled .navbar { background: #1e1f36; border-bottom-color: rgba(255,25
   .pc-card { flex-direction: column; gap: 6px; padding: 26px 20px 22px; }
   .pc-mascot { margin: -12px 0 0 -46px; }
 }
+.pc-label { color: var(--text); font-weight: 700; }
