@@ -27,10 +27,6 @@ export function FaqBlock({ value }: FaqBlockProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      <div className="rp-kicker-row">
-        <span className="rp-kicker">Preguntas frecuentes</span>
-        <span className="ht-chip">{faqs.length} {faqs.length === 1 ? 'pregunta' : 'preguntas'}</span>
-      </div>
       <div className="faq-list">
         {items.map((item, i) => {
           const isOpen = open === i

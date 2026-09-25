@@ -1290,7 +1290,7 @@ button[style*="var(--green)"]:hover, a[style*="var(--green)"]:hover { filter: br
 .author-bar-avatar--initial, .author-bar-icon {
   width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
   display: inline-flex; align-items: center; justify-content: center;
-  background: rgba(255,144,25,0.12); border: 1px solid rgba(255,144,25,0.3);
+  background: var(--bg-card); border: 2px solid rgba(255,255,255,0.14);
   color: var(--green); font-weight: 800; font-size: 17px;
 }
 .author-bar-label { font-size: 12px; color: var(--text-faint); line-height: 1.3; }
