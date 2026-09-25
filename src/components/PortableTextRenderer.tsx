@@ -122,19 +122,19 @@ export function PortableTextRenderer({ value, posts }: { value: any[]; posts?: P
       },
     },
     list: {
-      bullet: ({ children }: any) => <ul style={{ listStyle: 'none', padding: 0, margin: '16px 0 20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>{children}</ul>,
-      number: ({ children }: any) => <ol style={{ paddingLeft: '24px', margin: '16px 0 20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>{children}</ol>,
+      bullet: ({ children }: any) => <ul className="pt-list pt-list--bullet">{children}</ul>,
+      number: ({ children }: any) => <ol className="pt-list pt-list--number">{children}</ol>,
     },
     listItem: {
       bullet: ({ children }: any) => (
-        <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.65 }}>
-          <Icon name="alt-arrow-right" size={16} color="var(--green)" style={{ flexShrink: 0, marginTop: '4px' }} />
+        <li>
+          <span className="pt-bullet" aria-hidden="true">
+            <svg viewBox="0 0 16 16" width="11" height="11"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </span>
           <span>{children}</span>
         </li>
       ),
-      number: ({ children }: any) => (
-        <li style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.65 }}>{children}</li>
-      ),
+      number: ({ children }: any) => <li><span>{children}</span></li>,
     },
     types: {
       ctaButton: ({ value }: any) => {

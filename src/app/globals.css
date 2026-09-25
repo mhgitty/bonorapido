@@ -1320,3 +1320,78 @@ html.is-scrolled .navbar { background: #1e1f36; border-bottom-color: rgba(255,25
   .navbar-inner { height: 68px; }
   .navbar-logo-img { height: 50px !important; }
 }
+
+/* ─── FAQ accordion: separate outlined cards, chevron on the left ────────── */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  border: 1px solid rgba(122,132,230,0.55); border-radius: 12px; overflow: hidden;
+  background: transparent; transition: border-color .15s;
+}
+.faq-item:hover { border-color: rgba(150,160,245,0.8); }
+.faq-q {
+  width: 100%; display: flex; align-items: center; gap: 14px; text-align: left;
+  padding: 18px 22px; background: transparent; border: 0; cursor: pointer;
+  font: inherit; font-size: 17px; font-weight: 700; line-height: 1.35; color: var(--text);
+}
+.faq-item.is-open .faq-q { background: rgba(255,255,255,0.07); }
+.faq-chevron { flex-shrink: 0; color: var(--text); transition: transform .2s ease; }
+.faq-item.is-open .faq-chevron { transform: rotate(90deg); }
+.faq-a { padding: 16px 22px 20px 56px; font-size: 15.5px; line-height: 1.7; color: var(--text-muted); }
+@media (max-width: 760px) {
+  .faq-q { padding: 15px 16px; font-size: 15.5px; gap: 10px; }
+  .faq-a { padding: 12px 16px 16px 46px; font-size: 14.5px; }
+}
+
+/* ─── Body lists: orange check chips + numbered badges ───────────────────── */
+.pt-list { list-style: none; padding: 0; margin: 18px 0 22px; display: flex; flex-direction: column; gap: 12px; }
+.pt-list > li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.65; color: var(--text-muted); }
+.pt-bullet {
+  flex-shrink: 0; width: 22px; height: 22px; margin-top: 2px; border-radius: 7px;
+  display: inline-flex; align-items: center; justify-content: center; color: #fff;
+  background: linear-gradient(135deg, #ffa53d 0%, #ff7a00 100%);
+  box-shadow: 0 3px 10px rgba(255,144,25,0.35), inset 0 1px 0 rgba(255,255,255,0.35);
+}
+.pt-list--number { counter-reset: pt; }
+.pt-list--number > li { counter-increment: pt; }
+.pt-list--number > li::before {
+  content: counter(pt); flex-shrink: 0; width: 24px; height: 24px; margin-top: 1px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 12.5px; font-weight: 800; color: var(--green);
+  background: rgba(255,144,25,0.12); border: 1.5px solid rgba(255,144,25,0.55);
+}
+
+/* ─── Pros / cons with mascot ────────────────────────────────────────────── */
+.pc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.pc-card {
+  position: relative; display: flex; gap: 22px; align-items: flex-start;
+  padding: 26px 26px 26px 22px; border-radius: 16px; overflow: hidden;
+  background: #262b4f; border: 1px solid rgba(255,255,255,0.08);
+}
+.pc-card::after { /* soft colour glow behind the mascot */
+  content: ''; position: absolute; left: -60px; top: -60px; width: 260px; height: 260px; border-radius: 50%;
+  pointer-events: none; opacity: .18; filter: blur(30px);
+}
+.pc-card--pros::after { background: #2fbf71; }
+.pc-card--cons::after { background: #ef4444; }
+/* Mascot "pops out" of a coloured disc: the hat rises above the circle, the body is cut by the disc's bottom curve */
+.pc-mascot {
+  position: relative; z-index: 1; flex-shrink: 0; width: 240px; height: 192px; margin: -12px -44px -8px -46px;
+  clip-path: path('M0 0 H240 V124 H188 A68 68 0 0 1 52 124 H0 Z');
+}
+.pc-mascot-disc { position: absolute; left: 52px; top: 56px; width: 136px; height: 136px; border-radius: 50%; }
+.pc-card--pros .pc-mascot-disc { background: radial-gradient(circle at 35% 30%, #5fe39c 0%, #2fbf71 55%, #1f8f53 100%); box-shadow: inset 0 -8px 18px rgba(0,0,0,0.25); }
+.pc-card--cons .pc-mascot-disc { background: radial-gradient(circle at 35% 30%, #ff8a8a 0%, #ef4444 55%, #b82f2f 100%); box-shadow: inset 0 -8px 18px rgba(0,0,0,0.25); }
+.pc-mascot img { position: absolute; left: 50%; top: 30px; width: 232px; height: auto; transform: translateX(-50%); filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35)); }
+.pc-body { position: relative; z-index: 1; min-width: 0; flex: 1; padding-top: 4px; }
+.pc-kicker { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
+.pc-card--pros .pc-kicker { color: #4fd98f; }
+.pc-card--cons .pc-kicker { color: #ff7b7b; }
+.pc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.pc-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; line-height: 1.55; color: var(--text); }
+.pc-ico { flex-shrink: 0; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; }
+.pc-card--pros .pc-ico { background: #2fbf71; box-shadow: 0 0 0 4px rgba(47,191,113,0.15); }
+.pc-card--cons .pc-ico { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,0.15); }
+@media (max-width: 560px) {
+  .pc-card { flex-direction: column; gap: 6px; padding: 26px 20px 22px; }
+  .pc-mascot { margin: -12px 0 0 -46px; }
+}

@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-import { Icon } from '@/components/Icon'
 
 interface FaqBlockProps { value: { items?: { question: string; answer: string }[] } }
 
@@ -28,52 +27,23 @@ export function FaqBlock({ value }: FaqBlockProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      <div style={{ border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden' }}>
+      <div className="faq-list">
         {items.map((item, i) => {
           const isOpen = open === i
           return (
-            <div key={i} style={{ borderBottom: i < items.length - 1 ? '1px solid var(--border)' : 'none' }}>
+            <div key={i} className={`faq-item${isOpen ? ' is-open' : ''}`}>
               <button
+                type="button"
+                className="faq-q"
                 onClick={() => setOpen(isOpen ? null : i)}
-                style={{
-                  width: '100%',
-                  textAlign: 'left',
-                  padding: '20px 24px',
-                  background: 'var(--bg-card)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  gap: '16px',
-                  fontSize: '15px',
-                  fontWeight: 600,
-                  color: 'var(--text)',
-                  lineHeight: 1.4,
-                }}
+                aria-expanded={isOpen}
               >
+                <svg className="faq-chevron" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
                 <span>{item.question}</span>
-
-                {/* question-circle icon */}
-                <Icon
-                  name="question-circle"
-                  size={28}
-                  color={isOpen ? 'var(--green)' : 'var(--text-faint)'}
-                  style={{ flexShrink: 0, transition: 'color 0.2s' }}
-                />
               </button>
-
-              {isOpen && (
-                <div style={{
-                  padding: '0 24px 20px',
-                  fontSize: '14.5px',
-                  color: 'var(--text-muted)',
-                  lineHeight: 1.7,
-                  background: 'var(--bg-card)',
-                }}>
-                  {item.answer}
-                </div>
-              )}
+              {isOpen && <div className="faq-a">{item.answer}</div>}
             </div>
           )
         })}
