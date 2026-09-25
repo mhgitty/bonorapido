@@ -45,8 +45,11 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-snippet': -1, 'max-image-preview': 'large', 'max-video-preview': -1 },
   },
   icons: {
-    icon: [{ url: '/favicon.webp', type: 'image/webp' }],
-    apple: '/favicon.webp',
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/favicon.webp', type: 'image/webp', sizes: '192x192' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
 }
 

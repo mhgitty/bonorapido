@@ -68,35 +68,21 @@ export function HowToBlock({ value }: HowToBlockProps) {
   } : null
 
   return (
-    <div style={{ margin: '32px 0' }}>
+    <div className="ht">
       {howToSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
         />
       )}
-      {(value.title || mins) && (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap', marginBottom: value.intro ? '10px' : '16px' }}>
-          {value.title && (
-            <h2 style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(18px, 2.5vw, 24px)',
-              fontWeight: 700,
-              color: 'var(--text)',
-              letterSpacing: '-0.02em',
-              margin: 0,
-            }}>
-              {value.title}
-            </h2>
-          )}
+
+      <div className="ht-head">
+        <div className="ht-meta">
+          <span className="ht-kicker">Guía paso a paso</span>
+          <span className="ht-chip">{steps.length} pasos</span>
           {mins && (
-            <span style={{
-              display: 'inline-flex', alignItems: 'center', gap: '6px',
-              background: 'rgba(255,144,25,0.1)', color: 'var(--green)',
-              fontSize: '13px', fontWeight: 700,
-              padding: '5px 12px', borderRadius: '20px', flexShrink: 0,
-            }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <span className="ht-chip">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="9" />
                 <path d="M12 7v5l3 2" />
               </svg>
@@ -104,79 +90,37 @@ export function HowToBlock({ value }: HowToBlockProps) {
             </span>
           )}
         </div>
-      )}
-
-      {value.intro && (
-        <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7, margin: '0 0 18px', maxWidth: '760px' }}>
-          {value.intro}
-        </p>
-      )}
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-        {value.items.map((item, i) => (
-          <div key={i} style={{
-            display: 'grid',
-            gridTemplateColumns: '36px 1fr',
-            columnGap: '18px',
-            rowGap: '10px',
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border)',
-            borderRadius: '16px',
-            padding: '26px 28px',
-            alignItems: 'center',
-          }}>
-            {/* Number badge */}
-            <div style={{
-              width: '36px',
-              height: '36px',
-              background: 'var(--green)',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-            }}>
-              <span style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '15px',
-                fontWeight: 700,
-                color: '#fff',
-                lineHeight: 1,
-              }}>
-                {i + 1}
-              </span>
-            </div>
-
-            {/* Title (aligned next to the badge) */}
-            {item.title && (
-              <h3 style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(18px, 2.2vw, 21px)',
-                fontWeight: 700,
-                color: 'var(--text)',
-                margin: 0,
-                letterSpacing: '-0.02em',
-                alignSelf: 'center',
-              }}>
-                {item.title}
-              </h3>
-            )}
-
-            {/* Body (spans under the title, indented past the badge) */}
-            {item.body && (Array.isArray(item.body) ? item.body.length > 0 : true) && (
-              <div style={{ gridColumn: '2' }}>
-                {Array.isArray(item.body) ? (
-                  <PortableText value={item.body} components={stepBodyComponents} />
-                ) : (
-                  <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
-                    {item.body}
-                  </p>
-                )}
-              </div>
-            )}
-          </div>
-        ))}
+        {value.title && <h2 className="ht-title">{value.title}</h2>}
+        {value.intro && <p className="ht-intro">{value.intro}</p>}
       </div>
+
+      <ol className="ht-steps">
+        {value.items.map((item, i) => (
+          <li key={i} className="ht-step">
+            <div className="ht-marker" aria-hidden="true"><span>{i + 1}</span></div>
+            <div className="ht-card">
+              <span className="ht-watermark" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <div className="ht-step-label">Paso {String(i + 1).padStart(2, '0')}</div>
+              {item.title && <h3 className="ht-step-title">{item.title}</h3>}
+              {item.body && (Array.isArray(item.body) ? item.body.length > 0 : true) && (
+                <div className="ht-step-body">
+                  {Array.isArray(item.body) ? (
+                    <PortableText value={item.body} components={stepBodyComponents} />
+                  ) : (
+                    <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>{item.body}</p>
+                  )}
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+        <li className="ht-step ht-step--finish" aria-hidden="true">
+          <div className="ht-marker ht-marker--finish">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+          </div>
+          <div className="ht-finish-text">¡Listo! Ya estás dentro.</div>
+        </li>
+      </ol>
     </div>
   )
 }
