@@ -3,7 +3,9 @@ import { PortableText } from '@portabletext/react'
 
 const components = {
   block: {
-    normal: ({ children }: any) => <>{children}</>,
+    // Each paragraph is a block-level span (valid inside the parent <p>) so
+    // multi-paragraph intros keep their breaks.
+    normal: ({ children }: any) => <span className="rich-intro-p">{children}</span>,
   },
   marks: {
     strong: ({ children }: any) => <strong>{children}</strong>,

@@ -89,6 +89,7 @@ export function CmsPageView({ page, settings, hreflangScript, slug, homeHref, la
       <JsonLd data={jsonLd} />
       <HreflangHead script={hreflangScript} />
       <HeroSection
+          toolbar={page?.body ? <MobileToc body={page.body} buttons={heroButtons} /> : null}
         title={page.title}
         intro={page.intro ?? undefined}
         author={author}
@@ -113,7 +114,6 @@ export function CmsPageView({ page, settings, hreflangScript, slug, homeHref, la
       {page.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} buttons={heroButtons} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

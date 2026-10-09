@@ -79,6 +79,7 @@ export default async function CaCasinoGuidePage({ params }: Props) {
       <JsonLd data={jsonLd} />
       <HreflangLinks docId={(guide as any)._id} />
       <HeroSection
+          toolbar={guide?.body ? <MobileToc body={guide.body} buttons={heroButtonsFor(guide)} /> : null}
         title={guide.title}
         intro={(guide as any).intro ?? undefined}
         author={author}
@@ -101,7 +102,6 @@ export default async function CaCasinoGuidePage({ params }: Props) {
       {guide.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={guide.body} buttons={heroButtonsFor(guide)} />
             <PortableTextRenderer value={guide.body} />
           </article>
           <aside className="toc-sidebar">

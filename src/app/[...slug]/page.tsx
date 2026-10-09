@@ -98,6 +98,7 @@ export default async function DynamicPage({ params }: Props) {
       <JsonLd data={jsonLd} />
       <Navbar />
       <HeroSection
+          toolbar={page?.body ? <MobileToc body={page.body} buttons={heroButtons} /> : null}
         title={page.title}
         intro={page.intro}
         author={author}
@@ -128,7 +129,6 @@ export default async function DynamicPage({ params }: Props) {
       {page.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} buttons={heroButtons} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

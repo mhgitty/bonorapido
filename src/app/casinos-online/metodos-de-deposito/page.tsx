@@ -58,7 +58,7 @@ export default async function PaymentMethodsIndexPage() {
         '@id': `${CANONICAL}#webpage`,
         url: CANONICAL,
         name: page.title,
-        description: page.intro || '',
+        description: replaceDateVars(page.intro),
         inLanguage: 'es-ES',
         publisher: { '@type': 'Organization', name: 'Bonorapido', url: BASE },
       },
@@ -72,6 +72,7 @@ export default async function PaymentMethodsIndexPage() {
       <Navbar />
 
       <HeroSection
+          toolbar={page?.body ? <MobileToc body={page.body} buttons={heroButtonsFor(page)} /> : null}
         title={page.title}
         intro={page.intro}
         author={author}
@@ -109,7 +110,6 @@ export default async function PaymentMethodsIndexPage() {
       {page.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} buttons={heroButtonsFor(page)} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

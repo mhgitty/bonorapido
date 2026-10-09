@@ -200,7 +200,7 @@ export default async function SlugPage({ params }: Props) {
         '@id': `${canonical}#webpage`,
         url: canonical,
         name: page.title,
-        description: page.intro || '',
+        description: replaceDateVars(page.intro),
         inLanguage: 'es-ES',
         publisher: { '@type': 'Organization', name: 'Bonorapido', url: BASE },
       },
@@ -213,6 +213,7 @@ export default async function SlugPage({ params }: Props) {
       <HreflangLinks docId={(page as any)._id} />
       <Navbar />
       <HeroSection
+          toolbar={page?.body ? <MobileToc body={page.body} buttons={heroButtonsFor(page)} /> : null}
         title={page.title}
         intro={page.intro}
         author={author}
@@ -241,7 +242,6 @@ export default async function SlugPage({ params }: Props) {
       {page.body && (
         <div className="article-layout">
           <article className="article-content">
-            <MobileToc body={page.body} buttons={heroButtonsFor(page)} />
             <PortableTextRenderer value={page.body} />
           </article>
           <aside className="toc-sidebar">

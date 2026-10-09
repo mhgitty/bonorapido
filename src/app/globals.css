@@ -1537,3 +1537,10 @@ html.is-scrolled .navbar { background: #1e1f36; border-bottom-color: rgba(255,25
   background: #1e1f36; border: 2px solid #ff9019; box-shadow: 0 0 0 3px rgba(255,144,25,0.12);
 }
 .pt-list--number > li:not(:last-child)::after { left: 11px; top: 27px; }
+
+/* Jump buttons + Índice toolbar under the intro */
+.hero-section--article { position: relative; z-index: 5; overflow: visible !important; }
+.hero-toolbar { margin-top: 22px; }
+.hero-toolbar .mobile-toc.article-toolbar { margin: 0; }
+.rich-intro-p { display: block; }
+.rich-intro-p + .rich-intro-p { margin-top: 12px; }

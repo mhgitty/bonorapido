@@ -7,8 +7,13 @@ const MONTHS_DA = [
  * Replace [year], [month], [date] tokens with current Danish date values.
  * Safe to call with null/undefined — returns the input unchanged.
  */
-export function replaceDateVars(str: string | null | undefined): string {
-  if (!str) return str ?? ''
+export function replaceDateVars(input: unknown): string {
+  // Accepts plain strings or Portable Text arrays (e.g. rich-text intros used as
+  // meta description fallback) — arrays are flattened to plain text.
+  const str = Array.isArray(input)
+    ? input.map((b: any) => (b?.children || []).map((c: any) => c?.text || '').join('')).filter(Boolean).join(' ')
+    : typeof input === 'string' ? input : ''
+  if (!str) return ''
   const now = new Date()
   const year  = now.getFullYear().toString()
   const month = MONTHS_DA[now.getMonth()]

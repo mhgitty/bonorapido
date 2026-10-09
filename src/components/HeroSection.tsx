@@ -2,6 +2,7 @@ import { replaceDateVars } from '@/lib/dateVars'
 import { Breadcrumbs } from './Breadcrumbs'
 import { AuthorBar } from './AuthorBar'
 import { RichIntro } from './RichIntro'
+import type { ReactNode } from 'react'
 
 interface Crumb { label: string; href?: string }
 
@@ -16,9 +17,11 @@ interface HeroSectionProps {
   breadcrumbs?: Crumb[]
   /** Optional anchor buttons below the text that scroll to sections on the page. */
   buttons?: { text: string; targetId: string; variant?: 'solid' | 'outline' }[] | null
+  /** Jump buttons + Índice toolbar, rendered right below the intro. */
+  toolbar?: ReactNode
 }
 
-export function HeroSection({ title, intro, eyebrow, updatedAt, narrow = false, author, factChecker, breadcrumbs, buttons }: HeroSectionProps) {
+export function HeroSection({ title, intro, eyebrow, updatedAt, narrow = false, author, factChecker, breadcrumbs, buttons, toolbar }: HeroSectionProps) {
   const maxWidth = narrow ? '760px' : '1250px'
   const hasAuthorBar = author || factChecker || updatedAt
   const hasIntro = Array.isArray(intro) ? intro.length > 0 : !!intro
@@ -59,6 +62,8 @@ export function HeroSection({ title, intro, eyebrow, updatedAt, narrow = false, 
             {typeof intro === 'string' ? replaceDateVars(intro) : <RichIntro value={intro} />}
           </p>
         )}
+
+        {toolbar && <div className="hero-toolbar">{toolbar}</div>}
 
         {buttons && buttons.length > 0 && (
           <div style={{ marginTop: hasIntro || hasAuthorBar ? '20px' : '16px' }}>
