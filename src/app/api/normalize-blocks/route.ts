@@ -59,6 +59,17 @@ async function normalizeDoc(id: string) {
       report[field] = `skipped — ${bad} blocks still missing _type/_key`
     }
   }
+
+  // Casino reviews: turn the author's opinion section (an H3 like "La opinión de
+  // William West sobre X" + its paragraphs) into an authorOpinionBlock.
+  if (doc._type === 'bookmaker') {
+    const src: Block[] = patch.body ?? (Array.isArray(doc.body) ? doc.body : [])
+    const converted = convertOpinion(src)
+    if (converted) {
+      patch.body = converted
+      report.opinion = 'converted author opinion section to block'
+    }
+  }
   if (Object.keys(patch).length === 0) return NextResponse.json({ ok: true, id, changed: false })
   await client.patch(id).set(patch).commit()
   return NextResponse.json({ ok: true, id, changed: true, report })
@@ -108,4 +119,23 @@ export async function POST(req: NextRequest) {
   }
 
   return await normalizeDoc(id)
+}
+
+const OPINION_HEADING = /\bwilliam\b|opini[oó]n de|impresi[oó]n de/i
+const blockText = (b: Block) => (b?.children || []).map((c: any) => c?.text || '').join('')
+
+function convertOpinion(body: Block[]): Block[] | null {
+  if (!body.length || body.some((b) => b?._type === 'authorOpinionBlock')) return null
+  const i = body.findIndex((b, idx) => idx < 8 && b?._type === 'block' && b.style === 'h3' && OPINION_HEADING.test(blockText(b)))
+  if (i < 0) return null
+  let j = i + 1
+  while (j < body.length && body[j]?._type === 'block' && (body[j].style || 'normal') === 'normal' && !body[j].listItem) j++
+  if (j === i + 1) return null
+  const opinion: Block = {
+    _type: 'authorOpinionBlock',
+    _key: `op${body[i]._key || i}`.slice(0, 24),
+    title: blockText(body[i]).trim(),
+    body: body.slice(i + 1, j),
+  }
+  return [...body.slice(0, i), opinion, ...body.slice(j)]
 }

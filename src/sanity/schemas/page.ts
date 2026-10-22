@@ -732,6 +732,46 @@ export const bodyField = defineField({
         },
       },
     },
+    {
+      type: 'object',
+      name: 'authorOpinionBlock',
+      title: '🗣️ Author opinion',
+      fields: [
+        { name: 'title', title: 'Heading', type: 'string', description: 'E.g. "La opinión de William West sobre WinHugo" — rendered as an H3' },
+        {
+          name: 'author', title: 'Author', type: 'reference', to: [{ type: 'author' }],
+          description: 'Leave empty to use the default author from Site Settings',
+        },
+        {
+          name: 'body', title: 'Opinion', type: 'array',
+          of: [{
+            type: 'block',
+            styles: [{ title: 'Normal', value: 'normal' }],
+            lists: [],
+            marks: {
+              decorators: [
+                { title: 'Bold', value: 'strong' },
+                { title: 'Italic', value: 'em' },
+              ],
+              annotations: [{
+                name: 'link', type: 'object', title: 'Link',
+                fields: [
+                  { name: 'href', type: 'url', title: 'URL', validation: (r: any) => r.uri({ scheme: ['http', 'https', 'mailto', 'tel'], allowRelative: true }) },
+                  { name: 'blank', type: 'boolean', title: 'Open in new tab' },
+                  { name: 'nofollow', type: 'boolean', title: 'Nofollow' },
+                ],
+              }],
+            },
+          }],
+        },
+      ],
+      preview: {
+        select: { title: 'title', author: 'author.name' },
+        prepare({ title, author }: any) {
+          return { title: title || 'Author opinion', subtitle: `🗣️ ${author || 'Default author'}` }
+        },
+      },
+    },
   ],
 })
 

@@ -14,6 +14,7 @@ import { headingId } from '@/lib/headingId'
 import { CasinoKort } from './CasinoKort'
 import { BonusKort } from './BonusKort'
 import { HowToBlock } from './HowToBlock'
+import { AuthorOpinionBlock } from './AuthorOpinionBlock'
 import { DropdownBlock } from './DropdownBlock'
 
 type Post = {
@@ -178,6 +179,7 @@ export function PortableTextRenderer({ value, posts }: { value: any[]; posts?: P
       casinoKortBlock: ({ value }: any) => <CasinoKort value={value} />,
       bonusKortBlock: ({ value }: any) => <BonusKort value={value} />,
       howToBlock: ({ value }: any) => withAnchor('howToBlock', value._key, <HowToBlock value={value} />),
+      authorOpinionBlock: ({ value }: any) => <AuthorOpinionBlock value={value} />,
       latestPostsBlock: ({ value: blockValue }: any) =>
         posts ? <LatestPostsBlock value={blockValue} posts={posts} /> : null,
       image: ({ value }: any) => {
