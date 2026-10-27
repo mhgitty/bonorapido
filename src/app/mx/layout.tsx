@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { EmailFlyout } from '@/components/EmailFlyout'
 import { getMarketSettings, getSiteSettings } from '@/lib/sanity'
 
 function resolveUrl(item: {
@@ -52,6 +53,7 @@ export default async function AuLayout({ children }: { children: React.ReactNode
       <Navbar navItems={navItems} logoHref="/mx/" />
       {children}
       <Footer tagline={tagline} columns={columns} note={note} disclaimer={disclaimer} socialLinks={ms?.socialLinks ?? gs?.socialLinks} market="mx" />
+      <EmailFlyout market="mx" />
     </>
   )
 }
